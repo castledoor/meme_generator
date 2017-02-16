@@ -159,6 +159,20 @@ var jsMeme =
     
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText(val, x, y);
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "/images/white_logo.png");
+	xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
+	xhr.onload = function()
+	{
+		var img = new Image;
+		blob = xhr.response;//xhr.response is now a blob object
+		img.onload = function() {
+		    jsMeme.canvas.getContext('2d').drawImage(img, 30, 30, 254, 36)
+		}
+		img.src = URL.createObjectURL(blob);
+	}
+	xhr.send();
     
   },
   
