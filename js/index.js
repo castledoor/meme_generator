@@ -216,8 +216,15 @@ var jsMeme =
         jsMeme[lo[op]].height = nHeight;
 
         jsMeme[lo[op]].getContext('2d').drawImage(source, 0, 0, width, height, 0, 0, jsMeme.file.maxWidth, nHeight);
-        // jsMeme[lo[op]].getContext('2d').drawImage(a, 0, 0, width, height, 0, 0, jsMeme.file.maxWidth, nHeight);
+        
+		var img = new Image;
+		img.onload = function() {
+		    jsMeme[lo[op]].getContext('2d').drawImage(img, 30, 30 );
+		}
+		img.src = URL.createObjectURL('\\images\\white_logo.png');
+		jsMeme[lo[op]].getContext('2d').drawImage(a, 0, 0, 254, 36, 0, 0, 254, 36);
       }
+	  
     },
     
     import: function(input)
