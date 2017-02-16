@@ -501,7 +501,7 @@ aside form {
     /*overflow: hidden;*/
 }
 
-.img_1-1{background-image:url("../images/img_4.jpg");
+.img_1-1{background-image:url("../images/img_4.jpg") ;
 
 }
 .img_1-1-blur{background-image:url("../images/img_4_blur.jpg");
@@ -580,7 +580,6 @@ transition: background-image 0.2s ease-in-out;
     height: 50%;
     overflow: auto;
     margin: auto;
-    position: absolute;
 }
 
 .first-phase:first-child {
@@ -927,3 +926,69 @@ caret-color: hsla(228, 4%, 24%, 0.8);
 canvas {
   width: 100% !important;
 }
+
+
+@media  (max-width: 819px) {
+  .first-phase {
+     font-size: 15px;
+     height: 87%;
+     position: absolute;
+     text-align: center;
+     margin: 0 auto;
+     margin-left: auto;
+     margin-right: auto;
+     left: 0;
+     right: 0;
+     top: 0;
+     bottom: 0;
+     line-height: 27px;
+     width: 100%;
+     overflow: auto;
+     margin: auto;
+     position: absolute;
+  }
+
+  .first-phase:first-child {
+     padding-top: 18%; 
+  }
+
+  .get_started {
+    width: 65%;
+  }
+
+  .main_input {
+    margin-top: 46%;
+  }
+
+}
+
+@media (max-width: 627px) {
+  .square {
+    float: left;
+    position: relative;
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+      background-repeat: no-repeat;
+      padding-bottom: 100%;
+  }
+
+  .img_1-1{background-image:url("../images/img_4.jpg") 50% 50% no-repeat; {
+  min-height: 100%;
+    min-width: 100%;
+
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
