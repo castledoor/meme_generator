@@ -217,13 +217,27 @@ var jsMeme =
 
         jsMeme[lo[op]].getContext('2d').drawImage(source, 0, 0, width, height, 0, 0, jsMeme.file.maxWidth, nHeight);
         
-		var img = new Image;
-		img.onload = function() {
-		    jsMeme[lo[op]].getContext('2d').drawImage(img, 30, 30 );
-		}
-		img.src = URL.createObjectURL('\\images\\white_logo.png');
-		jsMeme[lo[op]].getContext('2d').drawImage(a, 0, 0, 254, 36, 0, 0, 254, 36);
+		
+		
+		
+		//jsMeme[lo[op]].getContext('2d').drawImage(a, 0, 0, 254, 36, 0, 0, 254, 36);
       }
+	  
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "/images/white_logo.png");
+	xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
+	xhr.onload = function()
+	{
+		var img = new Image;
+		blob = xhr.response;//xhr.response is now a blob object
+		img.onload = function() {
+
+		  jsMeme.canvas.getContext('2d').drawImage(img, 30, 30, 254, 36)
+
+		}
+		img.src = URL.createObjectURL(blob);
+	}
+	xhr.send();
 	  
     },
     
