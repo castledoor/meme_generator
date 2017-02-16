@@ -1,526 +1,196 @@
 <!DOCTYPE html>
 <html >
-<head>
-  <meta charset="UTF-8">
-  <title>Meme Generator</title>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <head>
+    <meta charset="UTF-8">
+    <title>Global Citizen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet prefetch' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='css/style.css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src="http://c.boylett.uk/libraries/Blob.js"></script>
+    <script src="http://c.boylett.uk/libraries/canvas-toBlob.js"></script>
+    <script src="http://c.boylett.uk/libraries/FileSaver.js"></script>
+    <script src="http://c.boylett.uk/libraries/psd.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <img src="./images/black_logo.png">
+    </header>
+    <div class="square blur img_1-1 8"></div>
+    <div class="square img_1-2">
+      <div class="first-phase">
+        <p>Share Your Story</p>
+        <p>with the World.</p>
+        <!-- <img src="./images/black_camera.png"> -->
+        <div class="get_started">
+          <p>Get Started</p>
+        </div>
+      </div>
+       <aside class="upload_magic">
+        <div  class="second-phase">
+          <div class="interaction-panel">
+            <div class="carrot"></div>
+            <form class="interaction-form" onsubmit="return jsMeme.file.export(), !1">
+              <button>
+                <img class="fr interaction-button-two" src="./images/icons/upload.svg">
+              </button>
+              <img class="fr interaction-button-three" src="./images/icons/share.svg">
+              <img class="fr interaction-button-one" onclick="return jsMeme.reset(), !1" src="./images/icons/redo.svg">
+            </form>
+          </div>
+        </div>
+      <div class="third-phase">
+          <!-- <main> -->
+        <div class="canvas-container">
+          <canvas></canvas>
+        </div>
+        <div class="not-ready">
+          <button class="dark">
+            <!-- Choose an image file to get started -->
+            <input class="drag-and-drop" type="file" accept="image/*;capture=camera" onchange="jsMeme.file.import(this)" />
+            <div class="drag-and-drop-overlay">
+              <img src="./images/icons/white_camera.svg">
+              <p class="drag-title">Drag Photo Here</p>
+            </div>
+          </button>
 
-  <link rel='stylesheet prefetch' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
-<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
+          <form class="main_input">
+            <input id="first-input" type="text" placeholder="Artist."  name="line-1" />
+            <input id="second-input" type="text" placeholder="Daughter." name="line-2" />
+            <form id="example" name="example" value="" id="sensorText">
+              <select id="sensor" onchange="updateText('sensor')">
+                <option value="Immigrant.">Immigrant.</option>
+                <option value="Refugee.">Refugee.</option>
+              </select>
+              <input id="third-input" type="hidden" placeholder="" name="line-3" />
+              <img class="logo-stamp" src="./images/white_logo.png">
+            </form>
+          </form>
+           
+        </div>
+      <!-- </main> -->
 
-      <style>
-      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
-      html, body { width: 100%; height: 100% }
+       
+        <!-- <form onsubmit="return jsMeme.file.export(), !1">
+          <button class="fr" onclick="return jsMeme.reset(), !1">Reset</button>
+          <button class="blue">Download Image</button>
+        </form> -->
+      </aside>
 
-body > img { display: none }
-.fr { float: right }
+   
 
-a
-{
-  color: inherit;
-  font-weight: 300;
-  cursor: pointer;
-}
-
-body
-{
-  background: #222;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-weight: 100;
-  font-size: 13px;
-  letter-spacing: 1px;
-  line-height: 140%;
-  color: #FFF;
-}
-
-body > aside
-{
-  display: block;
-  float: right;
-  width: 240px;
-  height: 100%;
-  overflow: auto;
-  background: #444;
-}
-
-body > aside > h1
-{
-  padding: 20px;
-  background: #363636;
-  font-size: 24px;
-  color: #EEE;
-}
-
-body > aside > h1 > b, body > aside > h1 > span { color: #666 }
-
-body > aside > h1 > span
-{
-  float: right;
-  margin-right: -5px;
-  font-size: 16px;
-  font-weight: 300;
-  color: #555;
-}
-
-body > aside > .drop
-{
-  position: relative;
-  margin: 20px 10px;
-  padding: 20px 0;
-  overflow: hidden;
-  text-align: center;
-  border: 2px dashed #555;
-  border-radius: 10px;
-  font-size: 16px;
-  color: #888;
-}
-
-body > aside > .drop > span
-{
-  display: block;
-  font-size: 9px;
-  font-weight: 300;
-  letter-spacing: 0;
-}
-
-body > aside > .drop > input
-{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: .000001;
-  cursor: default;
-}
-
-body > aside > form
-{
-  margin: 20px 0;
-  padding: 0 10px;
-}
-
-body > aside ul.changelog
-{
-  padding: 5px;
-  opacity: .33;
-}
-
-body > aside ul.changelog > li[v]:before
-{
-  content: attr(v);
-  display: block;
-  margin-bottom: -5px;
-  font-size: 9px;
-  color: #CCC;
-}
-
-body > aside ul.changelog > li[v].prog:before { content: attr(v) " (in progress)" }
-
-body > aside ul.changelog > li
-{
-  display: block;
-  margin: 5px;
-  font-size: 12px;
-}
-
-body > aside ul.changelog li > span
-{
-  position: relative;
-  display: block;
-  padding-left: 5px;
-}
-
-body > aside ul.changelog li > span:before
-{
-  content: "•";
-  position: absolute;
-  top: 0;
-  right: 100%;
-  margin: 0 -3px 0 0;
-  font-size: 9px;
-  color: #666;
-}
-
-body > aside ul.changelog > li > strong
-{
-  font-weight: 400;
-  font-size: 14px;
-}
-
-body > aside > .webcam > video
-{
-  display: block;
-  margin-bottom: 5px;
-  border-radius: 5px;
-}
-
-body > main
-{
-  position: relative;
-  display: block;
-  margin: 0 240px 0 0;
-  height: 100%;
-  overflow: auto;
-  /*box-shadow: inset 0 0 100px rgba(0, 0, 0, .25);*/
-}
-
-body > main > .canvas-container
-{
-  display: none;
-  position: relative;
-  margin: 20px;
-}
-
-body > main.ready > .canvas-container { display: block }
-
-body > main > .not-ready
-{
-  padding: 50px 0;
-  text-align: center;
-}
-
-body > main.ready > .not-ready { display: none }
-
-body > main > .canvas-container > canvas { display: block }
-
-input[type="text"], button
-{
-  position: relative;
-  display: inline-block;
-  margin: 3px 0;
-  padding: 8px 10px;
-  overflow: hidden;
-  border: none;
-  background: #FFF;
-  border-radius: 2px;
-}
-
-input[type="text"]:not([size]) { width: 91% }
-
-button
-{
-  width: auto;
-  background: #CCC;
-  color: #333;
-  cursor: pointer;
-}
-
-button > input[type="file"]
-{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: .0001;
-  cursor: pointer;
-}
-
-button.blue
-{
-  background: #3273A3;
-  color: #FFF;
-}
-
-button.dark
-{
-  background: #4E4E4E;
-  color: #FFF;
-}
-
-label > input + em
-{
-  display: inline-block;
-  padding-left: 10px;
-  vertical-align: middle;
-  font-weight: 400;
-  color: #777;
-}
-
-label.layout-type
-{
-  position: relative;
-  display: inline-block;
-  width: 90%;
-  height: 50px;
-  border: 1px solid #222;
-  background: #333;
-  border-radius: 3px;
-  text-align: left;
-  vertical-align: middle;
-  font-size: 0;
-}
-
-label.layout-type > input { display: none }
-
-label.layout-type > em
-{
-  display: inline-block;
-  width: 75%;
-  margin: 5px;
-}
-
-label.layout-type > em, label.layout-type > em:before, label.layout-type > em:after
-{
-  content: "";
-  height: 8px;
-  background: #222;
-}
-
-label.layout-type > em:before, label.layout-type > em:after { position: absolute }
-
-label.layout-type > em:before
-{
-  top: 10px;
-  left: 5px;
-  width: 45%;
-}
-
-label.layout-type > em:after
-{
-  bottom: 5px;
-  left: 5px;
-  height: 5px;
-  width: 55%;
-}
-
-label.layout-type.classic { text-align: center }
-
-label.layout-type.classic > em
-{
-  position: absolute;
-  bottom: 11px;
-  left: 50%;
-  margin-left: -37.5%;
-}
-
-label.layout-type.classic > em:before { display: none }
-
-label.layout-type.classic > em:after, label.layout-type.classic-split > em:after
-{
-  left: 50%;
-  margin-left: -27.5%;
-}
-
-label.layout-type.classic > em:after { top: 11px }
-
-label.layout-type.classic-split { text-align: center }
-
-label.layout-type.classic-split > em:before
-{
-  left: 50%;
-  margin-left: -22.5%;
-}
-
-label.layout-type > input:checked + b
-{
-  position: absolute;
-  display: block;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(50, 115, 163, .2);
-  border: 1px solid #3273A3;
-  border-radius: 2px;
-}
-
-.ui-slider
-{
-  display: inline-block;
-  height: 29px;
-  margin: 5px 10px 5px 0;
-  vertical-align: middle;
-  position: relative;
-  background: transparent;
-  border: none;
-}
-
-.ui-slider:before
-{
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 0;
-  left: 0;
-  height: 4px;
-  margin: -2px 0 0;
-  background: #777;
-  border-radius: 2px;
-}
-
-.ui-slider + input { display: none }
-
-.ui-slider > .ui-slider-handle
-{
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 14px;
-  height: 14px;
-  margin: -8px 0 0 -8px;
-  background: #EEE;
-  outline: none;
-  border: 1px solid #CCC;
-  border-radius: 10px;
-  cursor: e-resize;
-}
-    </style>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
-</head>
-
-<body>
-  <!--
-
-  Inspired by github.com/voxmedia/meme and a Tweet
-  twitter.com/CodePen/status/482595868215103489
-
-  Recruiting some help from the following sources:
-  meltingice.github.io/psd.js
-  github.com/eligrey
-
--->
-<script src="http://c.boylett.uk/libraries/Blob.js"></script>
-<script src="http://c.boylett.uk/libraries/canvas-toBlob.js"></script>
-<script src="http://c.boylett.uk/libraries/FileSaver.js"></script>
-<script src="http://c.boylett.uk/libraries/psd.min.js"></script>
-<aside>
-  <h1>
-    Global Citizen
-  </h1>
-  <div class="drop">
-    Drop an image file here
-    <span>Accepted: JP(E)G, PNG, GIF, BMP, PSD</span>
-    <input type="file" accept="image/*;capture=camera" onchange="jsMeme.file.import(this)" />
-  </div>
-  <form class="webcam" style="display: none">
-    <video></video>
-    <button class="fr" onclick="return jsMeme.webcam.reset(), !1">Retry</button>
-    <button class="blue" onclick="return jsMeme.webcam.take(), !1">Take</button>
-  </form>
-  <form>
-   <!--  <button class="fr" onclick="return jsMeme.webcam.start(), !1"><i class="fa fa-camera"></i></button> -->
-    <button onclick="return jsMeme.file.rotate(-90), !1"><i class="fa fa-rotate-left"></i></button>
-    <button onclick="return jsMeme.file.rotate(90), !1"><i class="fa fa-rotate-right"></i></button>
-  </form>
-  <form>
-  <h2>
-  Occupation:
-  </h2>
-    <input id="first-input" type="text" placeholder="Type your first line..."  name="line-1" />
-  <h2>
-  Passion:
-  </h2>
-    <input id="second-input" type="text" placeholder="Type your second line..." name="line-2" />
+    <!-- <img class="watermark" src="./images/white_logo.png"> -->
     
-   <form id="example" name="example" value="" id="sensorText">
-        <select id="sensor" onchange="updateText('sensor')">
-        <option value="IMMIGRANT">Immigrant</option>
-        <option value="REFUGEE">Refugee</option>
-    </select>
 
-<input id="third-input" type="hidden" placeholder="" name="line-3" />
-    <!-- <input type="text" value="" id="sensorText" />  -->
-</form>
-   <!--  <label><input type="text" size="14" placeholder="Image Size..." value="550" name="maximum-width" class="slider" min="200" max="1024" /> <em>Width: <span name="img-width">550px</span></em></label> -->
-  </form>
- <!--  <form>
-    <table width="100%" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="33%" align="left" valign="top">
-          <label class="layout-type default">
-            <em></em>
-            <input type="radio" name="layout-type" value="default" onchange="jsMeme.captions.layout(this.value)" checked />
-            <b></b>
-          </label>
-        </td>
-        <td width="33%" align="center" valign="top">
-          <label class="layout-type classic">
-            <em></em>
-            <input type="radio" name="layout-type" value="classic" onchange="jsMeme.captions.layout(this.value)" />
-            <b></b>
-          </label>
-        </td>
-        <td width="33%" align="right" valign="top">
-          <label class="layout-type classic-split">
-            <em></em>
-            <input type="radio" name="layout-type" value="classic-split" onchange="jsMeme.captions.layout(this.value)" />
-            <b></b>
-          </label>
-        </td>
-      </tr>
-    </table>
-  </form> -->
-  <form onsubmit="return jsMeme.file.export(), !1">
-    <button class="fr" onclick="return jsMeme.reset(), !1">Reset</button>
-    <button class="blue">Download Image</button>
-  </form>
- <!--  <form>
-    <ul class="changelog">
-      <li><strong>Changelog</strong></li>
-      <li v="1.0.8">
-        <span>Removed redundant functions</span>
-        <span>Removed &lt;!DOCTYPE&gt;</span>
-      </li>
-      <li v="1.0.7">
-        <span>Fixed icons (FontAwesome)</span>
-        <span>Changed width input to slider</span>
-        <span>Fixed download filename bug</span>
-      </li>
-      <li v="1.0.6">
-        <span>Added text layouts</span>
-        <span>Added webcam support</span>
-        <span>Added rotation</span>
-      </li>
-      <li v="1.0.5">
-        <span>Variable shadow strength</span>
-        <span>Facility to change image width (height is automatic)</span>
-      </li>
-      <li v="1.0.4">Removed temporary images from viewport</li>
-      <li v="1.0.3">
-        <span>Tweaked text typing timeout.</span>
-        <span>Fixed bugs, made 'lines' more extensible, added reset.</span>
-      </li>
-      <li v="1.0.2">Added shadows (blurring) to text.</li>
-      <li v="1.0.1">Initial build took ~2hrs.</li>
-    </ul>
-  </form> -->
-</aside>
-<main>
-  <div class="canvas-container">
-    <canvas></canvas>
-  </div>
-  <div class="not-ready">
-    <button class="dark">
-      Choose an image file to get started
-      <input type="file" accept="image/*;capture=camera" onchange="jsMeme.file.import(this)" />
-    </button>
-  </div>
-</main>
-
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
-<script type="text/javascript">
-
-function updateText(type) { 
- var id = "third-input";
- document.getElementById(id).value = document.getElementById(type).value;
-  document.getElementById("third-input").focus();
-  $('#third-input').keydown();
-  $('#third-input').keyup();
-
-}
+      </div>
 
 
+    <!-- all the action happens here -->
+    </div>
+    <div class="square blur img_1-3 1"></div>
+    <div class="square blur img_2-1 2"></div>
+    <div class="square blur img_2-2 3"></div>
+    <div class="square blur img_2-3 4"></div>
+    <div class="square blur img_3-1 5"></div>
+    <div class="square blur img_3-2 6"></div>
+    <div class="square blur img_3-3 7"></div>
+    <!-- <footer>
+      
+    </footer> -->
+    <div id="bottom">
+      <div class="float-left footer footer-1">
+        <p>#thisis<span>america</span></p>
+      </div>
 
-</script>
+      <div class="footer-nav footer footer-2">
+        <ul>
+          <li> Who We Are </li>
+          <li> Contact Us </li>
+          <li> Impact </li>
+        </ul>
+      </div>
+      
+      <div class="footer-image footer footer-3">
+        <img src="./images/white_logo_stacked.png">
+      </div>
+    </div>
 
+
+    <!-- <aside>
+      <div class="drop">
+        Drop an image file here
+        <span>Accepted: JP(E)G, PNG, GIF, BMP, PSD</span>
+        <input type="file" accept="image/*;capture=camera" onchange="jsMeme.file.import(this)" />
+      </div>
+      <button onclick="return jsMeme.file.rotate(-90), !1"><i class="fa fa-rotate-left"></i></button>
+      <button onclick="return jsMeme.file.rotate(90), !1"><i class="fa fa-rotate-right"></i></button>
+      <form>
+        <h2>
+          Occupation:
+        </h2>
+        <input id="first-input" type="text" placeholder="Type your first line..."  name="line-1" />
+        <h2>
+          Passion:
+        </h2>
+        <input id="second-input" type="text" placeholder="Type your second line..." name="line-2" />
+        <form id="example" name="example" value="" id="sensorText">
+          <select id="sensor" onchange="updateText('sensor')">
+            <option value="IMMIGRANT">Immigrant</option>
+            <option value="REFUGEE">Refugee</option>
+          </select>
+          <input id="third-input" type="hidden" placeholder="" name="line-3" />
+        </form>
+        <label><input type="text" size="14" placeholder="Image Size..." value="550" name="maximum-width" class="slider" min="200" max="1024" /> <em>Width: <span name="img-width">550px</span></em>
+        </label>
+      </form>
+      <form onsubmit="return jsMeme.file.export(), !1">
+        <button class="fr" onclick="return jsMeme.reset(), !1">Reset</button>
+        <button class="blue">Download Image</button>
+      </form>
+    </aside>
+    <main>
+      <div class="canvas-container">
+        <canvas></canvas>
+      </div>
+      <div class="not-ready">
+        <button class="dark">
+          Choose an image file to get started
+          <input type="file" accept="image/*;capture=camera" onchange="jsMeme.file.import(this)" />
+        </button>
+      </div>
+    </main> -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+
+
+          appId      : '1949853321909796',
+          xfbml      : true,
+          version    : 'v2.8'
+        });
+
+           FB.ui(
+ {
+  method: 'share',
+  href: 'https://developers.facebook.com/docs/'
+}, function(response){});
+        FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
+
+
+    </script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
     <script src="js/index.js"></script>
-
-</body>
+  </body>
 </html>

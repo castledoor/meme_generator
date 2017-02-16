@@ -1,7 +1,39 @@
-html, body { width: 100%; height: 100% }
+/*@font-face {
+  font-family: 'MarkOff';
+  src: url('../fonts/MarkOffcPro-Medium.eot');
+  src: url('../fonts/MarkOffcPro-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/MarkOffcPro-Medium.woff') format('woff'),
+    url('../fonts/MarkOffcPro-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}*/
+
+@font-face {
+  font-family: 'MarkOff';
+  src: url('../fonts/MarkOffcPro-Bold.eot');
+  src: url('../fonts/MarkOffcPro-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/MarkOffcPro-Bold.woff') format('woff'),
+    url('../fonts/MarkOffcPro-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+
+html, body { 
+  width: 100%; 
+  height: 100%;
+  font-family: "MarkOff";
+
+}
 
 body > img { display: none }
-.fr { float: right }
+.fr {
+  cursor:pointer;
+  margin-left: 4%;
+  margin-top:4%;
+
+}
 
 a
 {
@@ -12,13 +44,14 @@ a
 
 body
 {
-  background: #222;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "MarkOff";
   font-weight: 100;
   font-size: 13px;
   letter-spacing: 1px;
   line-height: 140%;
   color: #FFF;
+  min-width: 320px;
+  /*background-color: black;*/
 }
 
 body > aside
@@ -174,22 +207,30 @@ body > main > .canvas-container > canvas { display: block }
 
 input[type="text"], button
 {
-  position: relative;
-  display: inline-block;
-  margin: 3px 0;
-  padding: 8px 10px;
-  overflow: hidden;
+  /*position: relative;*/
+  /*display: inline-block;*/
+  /*margin: 3px 0;*/
+  /*padding: 8px 10px;*/
+  /*overflow: hidden;*/
   border: none;
-  background: #FFF;
-  border-radius: 2px;
+  /*background: #FFF;*/
+  /*border-radius: 2px;*/
 }
 
-input[type="text"]:not([size]) { width: 91% }
+input[type="text"]:not([size]) { 
+  /*width: 80%;*/
+  font-size: 2.5vw;
+  padding-bottom: 4px;
+  color: white;
+  font-family: "MarkOff";
+      width: 100%;
+
+ }
 
 button
 {
   width: auto;
-  background: #CCC;
+  background: transparent;
   color: #333;
   cursor: pointer;
 }
@@ -197,23 +238,29 @@ button
 button > input[type="file"]
 {
   position: absolute;
-  top: 0;
+  /*top: 0;*/
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: .0001;
   cursor: pointer;
+  /*top: 22px;*/
+  top: 30px;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1.3em;
+  border: 2px dashed #737373;
+
 }
 
-button.blue
+/*button.blue
 {
   background: #3273A3;
   color: #FFF;
-}
+}*/
 
 button.dark
 {
-  background: #4E4E4E;
+  background: transparent;
   color: #FFF;
 }
 
@@ -354,4 +401,529 @@ label.layout-type > input:checked + b
   border: 1px solid #CCC;
   border-radius: 10px;
   cursor: e-resize;
+}
+
+
+
+
+
+
+
+/*header {
+  height: 7%;
+  background-color: white;
+}
+
+header img {
+  width: 28%;
+  display: block;
+  margin: auto;
+  margin-bottom:20px;
+}
+*/
+/*canvas {
+  width: 100%;
+  height: 100%;
+}*/
+.canvas-container {
+  /*margin-top: -40px;*/
+  position: absolute;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /*margin-top: 46px;*/
+  overflow: hidden;
+}
+
+.drop {
+  margin-top: 170px;
+}
+
+header {
+    max-width: 180px;
+    margin: 0 auto;
+    height: 8%;
+    background-color: white;
+}
+
+header img {
+    width: 100%;
+    padding-top: 9%;
+
+}
+
+footer {
+    clear:both;
+    margin:0 1.66%;
+    width:89.68%;
+    padding: 3.5%;
+    background-color: black;
+    color: #fff;
+}
+
+footer img {
+  /*width: 100%;*/
+  /*padding-top: 6%;*/
+}
+
+aside form {
+  position: absolute;
+  /*z-index:40;*/
+}
+
+.logo-stamp {
+  width:50%;
+  padding-top: 4%;
+}
+
+#sensor {
+  background: transparent;
+  font-family: "MarkOff";
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  font-size: 2.5vw;
+  border-radius: 0;
+  border-color: #737373;
+  color: #737373;
+  padding-bottom: 0.5%;
+
+}
+.square {
+    float:left;
+    position: relative;
+    width: 33.3%;
+    padding-bottom : 33.3%; /* = width for a 1:1 aspect ratio */
+    margin:0%;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size: cover; /* you change this to "contain" if you don't want the images to be cropped */
+    /*overflow: hidden;*/
+}
+
+.img_1-1{background-image:url("../images/img_4.jpg");
+
+}
+.img_1-1-blur{background-image:url("../images/img_4_blur.jpg");
+-webkit-transition: background-image 0.3s ease-in-out;
+transition: background-image 0.3s ease-in-out;
+}
+.img_1-2{background-color: #D3232D;}
+.img_1-2_black {
+  background-color: black;
+  moz-transition: all .2s ease-in;
+  -o-transition: all .2s ease-in;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+  position: relative;
+}
+
+.img_1-3{background-image:url("../images/img_1.jpg");}
+
+.img_2-1{background-image:url("../images/img_2.jpg");}
+.img_2-2{background-image:url("../images/img_3.jpg");}
+.img_2-3{background-image:url("../images/img_5.jpg");}
+
+.img_3-1{background-image:url("../images/img_4.jpg");}
+.img_3-2{background-image:url("../images/img_1.jpg");}
+.img_3-3{background-image:url("../images/img_2.jpg");}
+
+
+.img_1-3-blur{background-image:url("../images/img_1_blur.jpg");
+-webkit-transition: background-image 0.2s ease-in-out;
+transition: background-image 0.2s ease-in-out;
+}
+
+.img_2-1-blur{background-image:url("../images/img_2_blur.jpg");
+-webkit-transition: background-image 0.2s ease-in-out;
+transition: background-image 0.2s ease-in-out;
+}
+.img_2-2-blur{background-image:url("../images/img_3_blur.jpg");
+-webkit-transition: background-image 0.2s ease-in-out;
+transition: background-image 0.2s ease-in-out;
+
+}
+.img_2-3-blur{background-image:url("../images/img_5_blur.jpg");
+-webkit-transition: background-image 0.2s ease-in-out;
+transition: background-image 0.2s ease-in-out;
+}
+
+.img_3-1-blur{background-image:url("../images/img_4_blur.jpg");
+-webkit-transition: background-image 0.2s ease-in-out;
+transition: background-image 0.2s ease-in-out;
+}
+.img_3-2-blur{background-image:url("../images/img_1_blur.jpg");
+-webkit-transition: background-image 0.2s ease-in-out;
+transition: background-image 0.2s ease-in-out;
+}
+.img_3-3-blur{background-image:url("../images/img_2_blur.jpg");
+-webkit-transition: background-image 0.2s ease-in-out;
+transition: background-image 0.2s ease-in-out;
+}
+
+
+
+.first-phase {
+    position: absolute;
+    text-align: center;
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-size: 20px;
+    /* top: 85px; */
+    line-height: 27px;
+    width: 100%;
+    height: 50%;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+}
+
+.first-phase:first-child {
+  padding-top: 16%;
+}
+
+.first-phase-gone {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.2s, opacity 0.2s linear;
+}
+
+.first-phase img {
+  opacity:0.3;
+  width: 20%;
+  padding-top: 16%;
+  padding-bottom: 6%;
+}
+
+.get_started {
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  cursor: hand;
+  cursor: pointer;
+  position: relative;
+  z-index: 4;
+  margin-top: 30px;
+ 
+}
+
+.get_started p {
+   font-family: 'MarkOff';
+}
+
+.drag-and-drop {
+    width: 85% !important;
+     margin: 0 auto !important; 
+    text-align: center !important;
+    height: 40% !important;
+    margin-top: 4%;
+     margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+
+  opacity: 0;
+            /*position: relative;*/
+            z-index: 1;
+
+
+
+
+
+    /* margin-left: 7%; */
+
+}
+
+
+.drag-and-drop-overlay  {
+  border: 2px dashed #555;
+  font-size: 16px;
+  width: 85% !important;
+  margin: 0 auto !important; 
+  text-align: center !important;
+  height: 40% !important;
+  margin-top: 4%;
+  margin: auto;
+  position: absolute;
+  top: 30px; left: 0; bottom: 0; right: 0;
+
+  /*opacity: 0;*/
+            /*position: relative;*/
+  /*z-index: 1;*/
+}
+
+.drag-and-drop-overlay img{
+  opacity: 0.3;
+  width: 18%;
+  margin-top: 14%;
+}
+
+
+
+.drag-title {
+  color: #737373;
+  font-size: 10px;
+  font-family: "MarkOff";
+  /*margin-top: 90px;*/
+}
+
+.get_started:hover {
+  color: #D3232D;
+  background-color: white;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.second-phase {
+  background-color: #D3232D; 
+  height: 90px;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  /*display: none;*/
+  opacity: 0;
+}
+
+.carrot {
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  
+  border-top: 10px solid black;
+  position: absolute;
+  z-index: 3;
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+
+.interaction-panel {
+  text-align: center;
+}
+
+.interaction-panel img {
+ /* margin-top: 6%;
+  width: 15%;
+  padding-left: 7px;
+  padding-right: 7px;*/
+}
+
+.interaction-button {
+ /* margin-top: 6%;
+  width: 15%;
+  padding-left: 7px;
+  padding-right: 7px;*/
+}
+
+.move-down  {
+  /*display: block;*/
+    opacity: 1;    
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+
+    -ms-transform: translate(0px, 90px); /* IE 9 */
+    -webkit-transform: translate(0px, 90px); /* Safari */
+    transform: translate(0px, 90px);
+    transition-duration: 0.3s;
+
+}
+
+.third-phase {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.third_phase_appear {
+  opacity: 1;
+ /* -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  -ms-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;*/
+      margin-top: 170px;
+
+}
+
+.upload_magic {
+  height: 100%;
+  margin-top: -170px;
+}
+
+#bottom {
+    clear:both;
+    width: 100%;
+    background-color: black;
+    color: #fff;
+    overflow-y: hidden;
+    height: 100px;
+}
+
+
+.footer-image {
+    max-width: 91px;
+    float: right;
+    height: 0%;
+    background-color: white;
+    padding: 0px;
+    margin-top: 34px;
+    margin-right: 20px;
+}
+
+.footer-image img {
+    width: 100%;
+    float: right;
+    margin-right: 4%;
+}
+
+.float-left {
+  float: left;
+  max-width: 91px;
+  height: 0%;
+  background-color: white;
+  padding-left: 40px;
+  margin-top: 39px;
+  margin-right: 20px;
+}
+
+.float-left p {
+  color: white;
+}
+
+.float-left span {
+  color: #D3232D;
+}
+
+.footer-nav {
+  margin-right: 0px;
+  margin-top: 39px;
+}
+
+.footer-nav li {
+  text-decoration: none;
+  color: white;
+  display: inline;
+  padding-right: 20px;
+
+
+}
+
+.footer-1 {
+     /*margin: 0.25em auto;*/
+     vertical-align: top;
+     width: 9%;
+ 
+}
+
+.footer-2 {
+     /*margin: 0.25em auto;*/
+     vertical-align: top;
+     width: 68%;
+     text-align: right;
+ 
+}
+
+.footer-3 {
+     /*margin: 0.25em auto;*/
+     vertical-align: top;
+     width: 9%;
+ 
+}
+
+.footer {
+  display: inline-block;
+}
+
+.watermark {
+  width: 47%;
+  margin-top: 102px;
+  margin-left: 23px;
+}
+
+
+input[type=text] {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #737373;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #737373;
+  font-family: "MarkOff";
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #737373;
+  font-family: "MarkOff";
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #737373;
+  font-family: "MarkOff";
+}
+:-moz-placeholder { /* Firefox 18- */
+  color:#737373;
+  font-family: "MarkOff";
+}
+
+.main_input {
+  /*margin-top: 124px;*/
+  /*margin-left: 28px;*/
+  color: white;
+  color: white;
+  /*width: 100%;*/
+  margin-top: 50%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.interaction-form {
+  width: 100% !important;
+}
+
+select {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   width: 100%;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+    color: white;
+}
+
+caret-color: auto;
+color: transparent;
+color: currentColor;
+
+/* <color> values */
+caret-color: red;
+caret-color: #5729e9;
+caret-color: rgb(0, 200, 0);
+caret-color: hsla(228, 4%, 24%, 0.8);
+
+
+canvas {
+  width: 100% !important;
 }

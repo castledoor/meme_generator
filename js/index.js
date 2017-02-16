@@ -14,7 +14,7 @@ var jsMeme =
   
   init: function()
   {
-    jsMeme.canvas = $('body > main > .canvas-container > canvas').get(0);
+    jsMeme.canvas = $('.canvas-container > canvas').get(0);
     jsMeme.cache = document.createElement('canvas');
 
 
@@ -63,23 +63,23 @@ var jsMeme =
     {
       'line-1':
       {
-        x: 20, y: 20,
+        x: 0, y: 0,
         alignment: 'left',
-        font: "500 30px \"Helvetica Neue\", Arial, sans-serif",
+        font: "500 30px \"MarkOff\", Arial, sans-serif",
         text: "",
       },
       'line-2':
       {
         x: 20, y: 60,
         alignment: 'left',
-        font: "500 30px \"Helvetica Neue\", Arial, sans-serif",
+        font: "500 30px \"MarkOff\", Arial, sans-serif",
         text: ""
       },
       'line-3':
       {
         x: 20, y: 100,
         alignment: 'left',
-        font: "500 30px \"Helvetica Neue\", Arial, sans-serif",
+        font: "500 30px \"MarkOff\", Arial, sans-serif",
         text: ""
       }
     },
@@ -159,57 +159,64 @@ var jsMeme =
     
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText(val, x, y);
+    
   },
   
   file:
   {
     current: {},
     
-    maxWidth: 550,
+    maxWidth: 500,
+
     
-    rotate: function(deg)
-    {
-      if(deg !== 90 && deg !== -90) return;
+    // rotate: function(deg)
+    // {
+    //   if(deg !== 90 && deg !== -90) return;
       
-      var tmp = document.createElement('canvas'),
-          ctx = tmp.getContext('2d'),
-          width = jsMeme.canvas.width,
-          height = jsMeme.canvas.height;
+    //   var tmp = document.createElement('canvas'),
+    //       ctx = tmp.getContext('2d'),
+    //       width = jsMeme.canvas.width,
+    //       height = jsMeme.canvas.height;
       
-      tmp.width = height;
-      tmp.height = width;
+    //   tmp.width = height;
+    //   tmp.height = width;
       
-      ctx.rotate(deg * Math.PI / 180);
+    //   ctx.rotate(deg * Math.PI / 180);
       
-      switch(deg)
-      {
-        case 90: ctx.drawImage(jsMeme.cache, 0, -height, width, height); break;
-        case -90: ctx.drawImage(jsMeme.cache, -width, 0, width, height); break;
-      }
+    //   switch(deg)
+    //   {
+    //     case 90: ctx.drawImage(jsMeme.cache, 0, -height, width, height); break;
+    //     case -90: ctx.drawImage(jsMeme.cache, -width, 0, width, height); break;
+    //   }
       
-      jsMeme.cache.width = jsMeme.canvas.width = tmp.width;
-      jsMeme.cache.height = jsMeme.canvas.height = tmp.height;
-      jsMeme.canvas.getContext('2d').drawImage(tmp, 0, 0);
-      jsMeme.cache.getContext('2d').drawImage(jsMeme.canvas, 0, 0);
+    //   jsMeme.cache.width = jsMeme.canvas.width = tmp.width;
+    //   jsMeme.cache.height = jsMeme.canvas.height = tmp.height;
+    //   jsMeme.canvas.getContext('2d').drawImage(tmp, 0, 0);
+    //   jsMeme.cache.getContext('2d').drawImage(jsMeme.canvas, 0, 0);
       
-      jsMeme.captions.redraw();
-    },
+    //   jsMeme.captions.redraw();
+    // },
     
     render: function(source)
     {
       $('body > main:not(.ready)').addClass('ready');
+      $('canvas').css('width', "100%");
+      var a = "http://www.google.com/intl/en_com/images/logo_plain.png";
+      var canvas_width = $('.canvas-container' ).width();
       
       var lo = ['canvas', 'cache'],
           width = source.width,
           height = source.height,
-          nHeight = Math.round(jsMeme.file.maxWidth / width * height);
+          nHeight = Math.round(canvas_width );
+          console.log(width);
 
       for(op in lo)
       {
-        jsMeme[lo[op]].width = jsMeme.file.maxWidth;
+        jsMeme[lo[op]].width = nHeight;
         jsMeme[lo[op]].height = nHeight;
 
         jsMeme[lo[op]].getContext('2d').drawImage(source, 0, 0, width, height, 0, 0, jsMeme.file.maxWidth, nHeight);
+        // jsMeme[lo[op]].getContext('2d').drawImage(a, 0, 0, width, height, 0, 0, jsMeme.file.maxWidth, nHeight);
       }
     },
     
@@ -265,7 +272,7 @@ var jsMeme =
       jsMeme.canvas.toBlob(function(blob)
       {
         var filename = jsMeme.file.current.name
-          .replace(/\.(.*?)$/, '-modified.png')
+          .replace(/\.(.*?)$/, '-GlobalCitzen-ThisisAmerica.png')
           .replace(/\{date\}/gi, new Date().toUTCString().toLowerCase().replace(/[^a-zA-Z0-9]/g, '-'));
         
         if(filename.indexOf('.png') < 0)
@@ -366,3 +373,56 @@ var jsMeme =
 };
 
 $(jsMeme.init);
+
+function updateText(type) { 
+ var id = "third-input";
+ document.getElementById(id).value = document.getElementById(type).value;
+  document.getElementById("third-input").focus();
+  $('#third-input').keydown();
+  $('#third-input').keyup();
+
+}
+
+$('.get_started').click(function() {
+  $(".first-phase").addClass("first-phase-gone");
+  $(".img_1-2").addClass("img_1-2_black");
+  $(".second-phase").addClass("move-down");
+  $(".third-phase").addClass("third_phase_appear");
+  $(".1").removeClass("img_1-3");
+  $(".1").addClass("img_1-3-blur");
+
+  $(".2").removeClass("img_2-1");
+  $(".2").addClass("img_2-1-blur");
+
+  $(".3").removeClass("img_2-2");
+  $(".3").addClass("img_2-2-blur");
+
+  $(".4").removeClass("img_2-3");
+  $(".4").addClass("img_2-3-blur");
+
+  $(".5").removeClass("img_3-1");
+  $(".5").addClass("img_3-1-blur");
+
+  $(".6").removeClass("img_3-2");
+  $(".6").addClass("img_3-2-blur");
+
+  $(".7").removeClass("img_3-3");
+  $(".7").addClass("img_3-3-blur");
+
+  $(".8").removeClass("img_2-2");
+  $(".8").addClass("img_1-1-blur");
+
+});
+
+$('.drag-and-drop').click(function() {
+  $('.drag-and-drop-overlay').css("display", "none");
+});
+
+
+
+
+
+
+
+
+
