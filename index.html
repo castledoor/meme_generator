@@ -14,6 +14,7 @@
     <script src="http://c.boylett.uk/libraries/canvas-toBlob.js"></script>
     <script src="http://c.boylett.uk/libraries/FileSaver.js"></script>
     <script src="http://c.boylett.uk/libraries/psd.min.js"></script>
+	<script src="js/base64binary.js"></script>
   </head>
   <body>
     <header>
@@ -37,7 +38,7 @@
               <button>
                 <img class="fr interaction-button-two" src="./images/icons/upload.svg">
               </button>
-              <img class="fr interaction-button-three" src="./images/icons/share.svg">
+              <img onclick="shareOnFB();" class="fr interaction-button-three" src="./images/icons/share.svg">
               <img class="fr interaction-button-one" onclick="return jsMeme.reset(), !1" src="./images/icons/redo.svg">
             </form>
           </div>
@@ -163,32 +164,78 @@
       </div>
     </main> -->
     <script>
-      window.fbAsyncInit = function() {
-        FB.init({
+	
+		if ( XMLHttpRequest.prototype.sendAsBinary === undefined ) {
+		    XMLHttpRequest.prototype.sendAsBinary = function(string) {
+		        var bytes = Array.prototype.map.call(string, function(c) {
+		            return c.charCodeAt(0) & 0xff;
+		        });
+		        this.send(new Uint8Array(bytes).buffer);
+		    };
+		};
+		
+		(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/all.js";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+		
+		window.fbAsyncInit = function() {
+		    FB.init({
+		      appId  : "1949853321909796",
+		      status : true,
+		      cookie : true,
+		      xfbml  : true  
+		    });
+		};
+		
+		var postImageToFacebook = function(authToken,filename,mimeType,imageData,message) {
 
-
-          appId      : '1949853321909796',
-          xfbml      : true,
-          version    : 'v2.8'
-        });
-
-           FB.ui(
- {
-  method: 'share',
-  href: 'https://developers.facebook.com/docs/'
-}, function(response){});
-        FB.AppEvents.logPageView();
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-
-
+		    var boundary = '----ASDFJKDSFJDSKFEQ#$3reqds341dfdsac34343';
+	
+		    var formData = '--' + boundary + '\r\n'
+		    formData += 'Content-Disposition: form-data; name="source"; filename="' + filename + '"\r\n';
+		    formData += 'Content-Type: ' + mimeType + '\r\n\r\n';
+		    for ( var i = 0; i < imageData.length; ++i )
+		    {
+		        formData += String.fromCharCode( imageData[ i ] & 0xff );
+		    }
+		    formData += '\r\n';
+		    formData += '--' + boundary + '\r\n';
+		    formData += 'Content-Disposition: form-data; name="message"\r\n\r\n';
+		    formData += message + '\r\n'
+		    formData += '--' + boundary + '--\r\n';
+		    var xhr = new XMLHttpRequest();
+		    xhr.open( 'POST', 'https://graph.facebook.com/me/photos?access_token=' + authToken, true );
+		    xhr.onload = xhr.onerror = function() {
+		        console.log( xhr.responseText );
+		    };
+		    xhr.setRequestHeader( "Content-Type", "multipart/form-data; boundary=" + boundary );
+		    xhr.sendAsBinary( formData );
+		};
+		
+		
+		
+      var shareOnFB = function() {
+		  var data = jsMeme.canvas.toDataURL("image/png");
+		  	var encodedPng = data.substring(data.indexOf(',') + 1, data.length);
+		  	var decodedPng = Base64Binary.decode(encodedPng);
+		  	FB.getLoginStatus(function(response) {
+		  	  if (response.status === "connected") {
+		  		postImageToFacebook(response.authResponse.accessToken, "this-is-america", "image/png", decodedPng, "www.this-is-america.com");
+		  	  } else if (response.status === "not_authorized") {
+		  		 FB.login(function(response) {
+		  			postImageToFacebook(response.authResponse.accessToken, "this-is-america", "image/png", decodedPng, "www.this-is-america.com");
+		  		 }, {scope: "publish_actions"});
+		  	  } else {
+		  		 FB.login(function(response)  {
+		  			postImageToFacebook(response.authResponse.accessToken, "this-is-america", "image/png", decodedPng, "www.this-is-america.com");
+		  		 }, {scope: "publish_actions"});
+		  	  }
+		  	 });
+		 };
 
     </script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
