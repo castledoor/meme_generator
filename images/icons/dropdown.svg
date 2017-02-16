@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>dropdown</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-123.000000, -84.000000)">
+            <g id="dropdown" transform="translate(123.000000, 84.000000)">
+                <circle id="Oval-2" fill="#FFFFFF" opacity="0.545289855" cx="8.5" cy="8.5" r="8.5"></circle>
+                <polygon id="Rectangle-8" fill="#000000" transform="translate(8.460758, 7.923027) rotate(45.000000) translate(-8.460758, -7.923027) " points="10.587474 4.32407006 12.0597148 11.5219837 4.86180111 10.0497429"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

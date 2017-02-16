@@ -927,6 +927,9 @@ canvas {
   width: 100% !important;
 }
 
+a {
+  text-decoration: none;
+}
 
 @media  (max-width: 819px) {
   .first-phase {
@@ -982,7 +985,11 @@ canvas {
   }
 
 
+
+
 }
+
+
 
 
 
