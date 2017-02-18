@@ -162,7 +162,9 @@ var jsMeme =
     ctx.fillText(val, x, y);
 	
 	var xhr = new XMLHttpRequest();
+
 	xhr.open("GET", "/images/white_logo_copy.png");
+
 	xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
 	xhr.onload = function()
 	{
