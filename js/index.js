@@ -55,6 +55,7 @@ var jsMeme =
   reset: function()
   {
     window.location = window.location.href;
+    var canvas_calc = $("canvas").width() / 2
   },
   
   captions:
@@ -63,7 +64,7 @@ var jsMeme =
     {
       'line-1':
       {
-        x: 0, y: 0,
+        x: 0, y: 220,
         alignment: 'left',
         font: "500 30px \"MarkOff\", Arial, sans-serif",
         text: "",
@@ -159,6 +160,20 @@ var jsMeme =
     
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText(val, x, y);
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "/images/white_logo_copy.png");
+	xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
+	xhr.onload = function()
+	{
+		var img = new Image;
+		blob = xhr.response;//xhr.response is now a blob object
+		img.onload = function() {
+		    jsMeme.canvas.getContext('2d').drawImage(img, 30, 30, 254, 36)
+		}
+		img.src = URL.createObjectURL(blob);
+	}
+	xhr.send();
     
   },
   
@@ -224,15 +239,18 @@ var jsMeme =
       }
 	  
 	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "/images/white_logo.png");
+
+  var canvas_calc = $("canvas").width() / 2
+	xhr.open("GET", "/images/white_logo_copy.png");
 	xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
 	xhr.onload = function()
 	{
 		var img = new Image;
+    // console.log(img)
 		blob = xhr.response;//xhr.response is now a blob object
 		img.onload = function() {
 
-		  jsMeme.canvas.getContext('2d').drawImage(img, 30, 30, 254, 36)
+		  jsMeme.canvas.getContext('2d').drawImage(img,  20, canvas_calc * 1.75)
 
 		}
 		img.src = URL.createObjectURL(blob);
@@ -439,11 +457,21 @@ $('.drag-and-drop').click(function() {
   $('.drag-and-drop-overlay').css("display", "none");
 });
 
+$('.interaction-button-three').click(function() {
+  $('.share-dialog').addClass("share-dialog-show");
+});
 
+$(".button-bank li").click(function() {
+  $('.share-this').css("display", "none");
+  $('.thanks').css("display", "block");
+});
 
+$('.drag-and-drop').click(function() {
+  $('.logo-stamp').css("display", "none");
+});
 
-
-
-
+$('.close').click(function() {
+  $('.share-dialog').removeClass("share-dialog-show");
+});
 
 

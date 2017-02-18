@@ -2,112 +2,170 @@
 <html >
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <!-- <meta name="viewport" content="width=device-width"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"> -->
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+      <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no" />
+
+
+
     <title>Global Citizen</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel='stylesheet prefetch' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
+
     <link rel='stylesheet' href='css/style.css'>
+     <!-- <link rel='stylesheet' href='css/fullpage.css'> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
     <script src="http://c.boylett.uk/libraries/Blob.js"></script>
     <script src="http://c.boylett.uk/libraries/canvas-toBlob.js"></script>
     <script src="http://c.boylett.uk/libraries/FileSaver.js"></script>
     <script src="http://c.boylett.uk/libraries/psd.min.js"></script>
+    <!-- <script src="https://cdnjs.com/libraries/fullPage.js"></script> -->
 	<script src="js/base64binary.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-33907097-18', 'auto');
+    ga('send', 'pageview');
+
+  </script>
   </head>
   <body>
     <header>
       <img src="./images/black_logo.png">
     </header>
-    <div class="square blur img_1-1 8"></div>
-    <div class="square img_1-2">
-      <div class="first-phase">
-        <p>Share Your Story</p>
-        <p>with the World.</p>
-        <!-- <img src="./images/black_camera.png"> -->
-        <div class="get_started">
-          <p>Get Started</p>
-        </div>
+    
+    <div class="share-dialog">
+      <div class="close">
+        <img  src="./images/icons/ex.svg">
       </div>
-       <aside class="upload_magic">
-        <div  class="second-phase">
-          <div class="interaction-panel">
-            <div class="carrot"></div>
-            <form class="interaction-form" onsubmit="return jsMeme.file.export(), !1">
-              <button>
-                <img class="fr interaction-button-two" src="./images/icons/upload.svg">
-              </button>
-              <img onclick="shareOnFB();" class="fr interaction-button-three" src="./images/icons/share.svg">
-              <img class="fr interaction-button-one" onclick="return jsMeme.reset(), !1" src="./images/icons/redo.svg">
-            </form>
+      <div class="share-this">
+        <p>Share your picture:</p>
+        
+        <ul class="button-bank">
+          <li><img onclick="shareOnFB();" class="social-button" src="./images/icons/facebook.svg"></li>
+          <li><img class="social-button" src="./images/icons/email.svg"></li>
+        </ul>
+      </div>
+      <div class="thanks">
+        <p>Thanks for sharing</p>
+        <img class="social-button" src="./images/icons/sweet_success.svg">
+      </div>
+    </div>
+    
+      <div class="square blur img_1-1 8 "></div>
+    <div class="square-fixed">
+      <img class="square blur img_1-1 8 eight" src="./images/lab-tech.jpg">
+    </div>
+     <!-- <div class="mobile-group"> -->
+     <div class="mobile-group">
+      <div class=" square img_1-2">
+        <div class="first-phase">
+          <p>Share Your Story</p>
+          <p>with the World.</p>
+          <!-- <img src="./images/black_camera.png"> -->
+          <div class="get_started">
+            <p>Get Started</p>
           </div>
         </div>
-      <div class="third-phase">
-          <!-- <main> -->
-        <div class="canvas-container">
-          <canvas></canvas>
-        </div>
-        <div class="not-ready">
-          <button class="dark">
-            <!-- Choose an image file to get started -->
-            <input class="drag-and-drop" type="file" accept="image/*;capture=camera" onchange="jsMeme.file.import(this)" />
-            <div class="drag-and-drop-overlay">
-              <img src="./images/icons/white_camera.svg">
-              <p class="drag-title">Drag Photo Here</p>
+         <aside class="upload_magic">
+          <div  class="second-phase">
+            <div class="interaction-panel">
+              <div class="carrot"></div>
+              <form class="interaction-form" onsubmit="return jsMeme.file.export(), !1">
+                <button>
+                  <img class="fr interaction-button-two" src="./images/icons/upload.svg">
+                </button>
+                <!-- <img onclick="shareOnFB();" class="fr interaction-button-three" src="./images/icons/share.svg"> -->
+                <img class="fr interaction-button-three" src="./images/icons/share.svg">
+                <img class="fr interaction-button-one" onclick="return jsMeme.reset(), !1" src="./images/icons/redo.svg">
+              </form>
             </div>
-          </button>
+          </div>
+        <div class="third-phase">
+            <!-- <main> -->
+          <div class="canvas-container">
+            <canvas></canvas>
+          </div>
+          <div class="not-ready">
+            <button class="dark">
+              <!-- Choose an image file to get started -->
+              <input class="drag-and-drop" type="file" accept="image/*;capture=camera" onchange="jsMeme.file.import(this)" />
+              <div class="drag-and-drop-overlay">
+                <img src="./images/icons/white_camera.svg">
+                <p class="drag-title">Drag Photo Here</p>
+              </div>
+            </button>
 
-          <form class="main_input">
-            <input id="first-input" type="text" placeholder="Artist."  name="line-1" />
-            <input id="second-input" type="text" placeholder="Daughter." name="line-2" />
-            <form id="example" name="example" value="" id="sensorText">
-              <select id="sensor" onchange="updateText('sensor')">
-                <option value="Immigrant.">Immigrant.</option>
-                <option value="Refugee.">Refugee.</option>
-                <option value="Child of Immigrant.">Child of Immigrant.</option>
-              </select>
-              <input id="third-input" type="hidden" placeholder="" name="line-3" />
-              <img src="./images/icons/dropdown.svg">
-              <img class="logo-stamp" src="./images/white_logo.png">
+            <form class="main_input">
+              <input id="first-input" type="text" placeholder="Artist."  name="line-1" />
+              <input id="second-input" type="text" placeholder="Daughter." name="line-2" />
+              <form id="example" name="example" value="" id="sensorText">
+                <select id="sensor" onchange="updateText('sensor')">
+                  <option value="Immigrant.">Immigrant.</option>
+                  <option value="Refugee.">Refugee.</option>
+                  <option value="Immigrant Roots.">Immigrant Roots.</option>
+                  <option value="Native American.">Native American</option>
+                </select>
+                <input id="third-input" type="hidden" placeholder="" name="line-3" />
+                <img class="dropdown" src="./images/icons/dropdown.svg">
+                <img class="logo-stamp" src="./images/white_logo.png">
+              </form>
             </form>
-          </form>
-           
-        </div>
-      <!-- </main> -->
 
-       
-        <!-- <form onsubmit="return jsMeme.file.export(), !1">
-          <button class="fr" onclick="return jsMeme.reset(), !1">Reset</button>
-          <button class="blue">Download Image</button>
-        </form> -->
-      </aside>
+             
+          </div>
+        <!-- </main> -->
 
-   
+         
+          <!-- <form onsubmit="return jsMeme.file.export(), !1">
+            <button class="fr" onclick="return jsMeme.reset(), !1">Reset</button>
+            <button class="blue">Download Image</button>
+          </form> -->
+        </aside>
 
-    <!-- <img class="watermark" src="./images/white_logo.png"> -->
-    
+     
 
+      <!-- <img class="watermark" src="./images/white_logo.png"> -->
+      
+
+        
+
+
+      <!-- all the action happens here -->
+      </div>
+      <!-- <div class="mobile-square"> -->
+        <div class=" square blur img_1-3 1"></div>
+      <!-- </div> -->
+      
+        
+      
+        <div class=" square blur img_2-1 2"></div>
+        <div class=" square blur img_2-2 3"></div>
+        <div class=" square blur img_2-3 4"></div>
+        <div class=" square blur img_3-1 5"></div>
+        <div class=" square blur img_3-2 6"></div>
+        <div class=" square blur img_3-3 7"></div>
       </div>
 
-
-    <!-- all the action happens here -->
+   <!-- </div> -->
     </div>
-    <div class="square blur img_1-3 1"></div>
-    <div class="square blur img_2-1 2"></div>
-    <div class="square blur img_2-2 3"></div>
-    <div class="square blur img_2-3 4"></div>
-    <div class="square blur img_3-1 5"></div>
-    <div class="square blur img_3-2 6"></div>
-    <div class="square blur img_3-3 7"></div>
     <!-- <footer>
       
     </footer> -->
     <div id="bottom">
-      <div class="float-left footer footer-1">
-        <p>#ThisisAmerica></p>
-      </div>
 
+
+      <div class="float-left footer footer-1">
+        <p>#ThisisAmerica</p>
+      </div>
       <div class="footer-nav footer footer-2">
         <ul>
           <li> <a href="https://www.globalcitizen.org/en/about/who-we-are/">Who We Are</a> </li>
@@ -115,12 +173,30 @@
           <li> <a href="https://www.globalcitizen.org/en/impact/">Impact</a> </li>
         </ul>
       </div>
-      
       <div class="footer-image footer footer-3">
-        <a href="https://www.globalcitizen.org/en/impact/">
+        <a href="https://www.globalcitizen.org/en">
           <img src="./images/white_logo_stacked.png">
         </a>
       </div>
+
+
+      <div class="mobile-footer">
+        <div class="mfooter-1">
+          <p>#ThisisAmerica</p>
+          <a href="https://www.globalcitizen.org/en">
+            <img src="./images/white_logo_stacked.png">
+          </a>
+        </div>
+        <div class="mfooter-2">
+          <ul>
+            <li> <a href="https://www.globalcitizen.org/en/about/who-we-are/">Who We Are</a> </li>
+            <li> <a href="https://www.globalcitizen.org/en/about/contact-us/">Contact</a> </li>
+            <li> <a href="https://www.globalcitizen.org/en/impact/">Impact</a> </li>
+          </ul>
+        </div>
+      </div>
+
+ 
     </div>
 
 
@@ -188,7 +264,7 @@
         
         window.fbAsyncInit = function() {
             FB.init({
-              appId  : "1949853321909796",
+              appId  : "318978181833163",
               status : true,
               cookie : true,
               xfbml  : true  
@@ -230,21 +306,31 @@
             var decodedPng = Base64Binary.decode(encodedPng);
             FB.getLoginStatus(function(response) {
               if (response.status === "connected") {
-              postImageToFacebook(response.authResponse.accessToken, "this-is-america", "image/png", decodedPng, "www.this-is-america.com");
+              postImageToFacebook(response.authResponse.accessToken, "this-is-america", "image/png", decodedPng, "");
               } else if (response.status === "not_authorized") {
                FB.login(function(response) {
-                postImageToFacebook(response.authResponse.accessToken, "this-is-america", "image/png", decodedPng, "www.this-is-america.com");
+                postImageToFacebook(response.authResponse.accessToken, "this-is-america", "image/png", decodedPng, "");
                }, {scope: "publish_actions"});
               } else {
                FB.login(function(response)  {
-                postImageToFacebook(response.authResponse.accessToken, "this-is-america", "image/png", decodedPng, "www.this-is-america.com");
+                postImageToFacebook(response.authResponse.accessToken, "this-is-america", "image/png", decodedPng, "");
                }, {scope: "publish_actions"});
               }
              });
          };
 
+
+        
+
     </script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script>
+    $( document ).ready(function() {
+
+});
+
+
+    </script>
     <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
     <script src="js/index.js"></script>
   </body>
