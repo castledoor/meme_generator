@@ -1,3 +1,5 @@
+
+
 if(!window.File || !window.FileReader) alert
 (
   'Oops!\n' +
@@ -64,7 +66,7 @@ var jsMeme =
     {
       'line-1':
       {
-        x: 0, y: 220,
+        x: 0, y: 20,
         alignment: 'left',
         font: "500 30px \"MarkOff\", Arial, sans-serif",
         text: "",
@@ -160,22 +162,24 @@ var jsMeme =
     
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText(val, x, y);
-	
-	var xhr = new XMLHttpRequest();
+  
+  var xhr = new XMLHttpRequest();
 
-	xhr.open("GET", "/images/white_logo_copy.png");
+  xhr.open("GET", "/images/white_logo_copy.png");
 
-	xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
-	xhr.onload = function()
-	{
-		var img = new Image;
-		blob = xhr.response;//xhr.response is now a blob object
-		img.onload = function() {
-		    jsMeme.canvas.getContext('2d').drawImage(img, 30, 30, 254, 36)
-		}
-		img.src = URL.createObjectURL(blob);
-	}
-	xhr.send();
+  xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
+  xhr.onload = function()
+  {
+    var img = new Image;
+    var canvas_calc = $("canvas").width() / 2
+    blob = xhr.response;//xhr.response is now a blob object
+    img.onload = function() {
+        jsMeme.canvas.getContext('2d').drawImage(img,  20, canvas_calc * 1.75)
+        // jsMeme.canvas.getContext('2d').drawImage(img, 30, 30, 254, 36)
+    }
+    img.src = URL.createObjectURL(blob);
+  }
+  xhr.send();
     
   },
   
@@ -234,31 +238,31 @@ var jsMeme =
 
         jsMeme[lo[op]].getContext('2d').drawImage(source, 0, 0, width, height, 0, 0, jsMeme.file.maxWidth, nHeight);
         
-		
-		
-		
-		//jsMeme[lo[op]].getContext('2d').drawImage(a, 0, 0, 254, 36, 0, 0, 254, 36);
+    
+    
+    
+    //jsMeme[lo[op]].getContext('2d').drawImage(a, 0, 0, 254, 36, 0, 0, 254, 36);
       }
-	  
-	var xhr = new XMLHttpRequest();
+    
+  var xhr = new XMLHttpRequest();
 
   var canvas_calc = $("canvas").width() / 2
-	xhr.open("GET", "/images/white_logo_copy.png");
-	xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
-	xhr.onload = function()
-	{
-		var img = new Image;
+  xhr.open("GET", "/images/white_logo_copy.png");
+  xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
+  xhr.onload = function()
+  {
+    var img = new Image;
     // console.log(img)
-		blob = xhr.response;//xhr.response is now a blob object
-		img.onload = function() {
+    blob = xhr.response;//xhr.response is now a blob object
+    img.onload = function() {
 
-		  jsMeme.canvas.getContext('2d').drawImage(img,  20, canvas_calc * 1.75)
+      jsMeme.canvas.getContext('2d').drawImage(img,  20, canvas_calc * 1.75)
 
-		}
-		img.src = URL.createObjectURL(blob);
-	}
-	xhr.send();
-	  
+    }
+    img.src = URL.createObjectURL(blob);
+  }
+  xhr.send();
+    
     },
     
     import: function(input)
@@ -475,5 +479,6 @@ $('.drag-and-drop').click(function() {
 $('.close').click(function() {
   $('.share-dialog').removeClass("share-dialog-show");
 });
+
 
 

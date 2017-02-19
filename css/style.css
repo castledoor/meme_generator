@@ -522,8 +522,8 @@ aside form {
 .square {
     float:left;
     position: relative;
-    width: 33.3%;
-    padding-bottom : 33.3%; /* = width for a 1:1 aspect ratio */
+    width: 33.33333333333333%;
+    padding-bottom : 33.33333333333333%; /* = width for a 1:1 aspect ratio */
     margin:0%;
     background-position:center center;
     background-repeat:no-repeat;
@@ -641,7 +641,7 @@ transition: background-image 0.2s ease-in-out;
   cursor: pointer;
   position: relative;
   z-index: 4;
-  margin-top: 30px;
+  margin-top: 11%;
 }
 
 .get_started p {
@@ -1112,16 +1112,16 @@ a {
     display: block;
   }
 
-/*@media (max-width: 440px) {
+@media (max-width: 550px) {
 
 } 
-*/
+
 
 
 
 }
 
-@media (max-width: 440px) {
+@media (max-width: 550px) {
   .square {
     float: left;
     position: relative;
@@ -1244,6 +1244,14 @@ a {
 
    }
 
+   .get_started {
+      width: 44%;
+   }
+
+   .get_started p {
+      font-size: 5vw;
+   }
+
    .dropdown {
      margin-top: -8%;
    }
@@ -1262,7 +1270,7 @@ a {
     left: 0;
     width: 100%;
     z-index: 6000;
-    height: 65px;
+    height: 64px;
   /*  padding-right: 29%;
     padding-left: 29%;*/
 
