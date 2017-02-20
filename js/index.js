@@ -585,7 +585,7 @@ $('.get_started').click(function() {
 
 
 $('.drag-and-drop').click(function() {
-  // $('.drag-and-drop-overlay').css("display", "none");
+  $('.drag-and-drop-overlay').css("border", "2px dashed transparent");
     $('.main_input').removeClass("main_input_mask")
 });
 
@@ -616,11 +616,11 @@ $('.close').click(function() {
 
 
 
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
  $('.move-down').css("transform", "translate(0px, 125px)");
  $('.drag-title').empty();
 
- $('.drag-title').append("Select A Photo");
+ // $('.drag-title').append("Select A Photo");
 
  $('.share-dialog').css("height", "25%");
 }
