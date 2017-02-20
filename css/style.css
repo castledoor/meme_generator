@@ -631,7 +631,7 @@ transition: background-image 0.3s ease-in-out;
 .img_2-3{background-image:url("../images/regina.jpg");}
 
 .img_3-1{background-image:url("../images/nurse.jpg");}
-.img_3-2{background-image:url("../images/police.jpg");}
+.img_3-2{background-image:url("../images/artist.jpg");}
 .img_3-3{background-image:url("../images/pastor.jpg");}
 
 
@@ -658,7 +658,7 @@ transition: background-image 0.2s ease-in-out;
 -webkit-transition: background-image 0.2s ease-in-out;
 transition: background-image 0.2s ease-in-out;
 }
-.img_3-2-blur{background-image:url("../images/police-blur.jpg");
+.img_3-2-blur{background-image:url("../images/artist-blur.jpg");
 -webkit-transition: background-image 0.2s ease-in-out;
 transition: background-image 0.2s ease-in-out;
 }
@@ -1046,6 +1046,11 @@ transition: background-image 0.2s ease-in-out;
     width: 50%;
     padding-left: 3%;
     margin-top: 25px;
+}
+
+.footer-1 p {
+  font-size: 17px;
+  margin-left: -21px;
 }
 .footer-2 {
      /*margin: 0.25em auto;*/
@@ -1499,7 +1504,7 @@ a {
 
 .mobile-brigade-footer p {
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 1px;
   vertical-align: top;
   padding-left: 8px;
 }
@@ -1513,6 +1518,10 @@ a {
     z-index: 5000;
     font-size: 18px;
 
+  }
+
+  .made-by a {
+    text-decoration: underline;
   }
 
   .mobile-brigade-footer {
