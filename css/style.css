@@ -31,8 +31,8 @@
 
 
 
-html, body { 
-  width: 100%; 
+html, body {
+  width: 100%;
   height: 100%;
   font-family: "MarkOff";
 
@@ -230,10 +230,10 @@ input[type="text"], button
 
 
 
-input[type="text"]:not([size]) { 
+input[type="text"]:not([size]) {
   /*width: 80%;*/
-  font-size: 2vw;
-  padding-bottom: 4px;
+  font-size: 2.6vw;
+  padding-bottom: 2px;
   color: transparent !important;
   font-family: "MarkOff";
   width: 100%;
@@ -504,7 +504,7 @@ aside form {
   border-top: none;
   border-right: none;
   border-left: none;
-  font-size: 2vw;
+  font-size: 2.6vw;
   border-radius: 0;
   border-color: #737373;
   color: #737373;
@@ -737,7 +737,7 @@ transition: background-image 0.2s ease-in-out;
 
 .drag-and-drop {
     width: 85% !important;
-     margin: 0 auto !important; 
+     margin: 0 auto !important;
     text-align: center !important;
     height: 40% !important;
     margin-top: 4%;
@@ -759,16 +759,19 @@ transition: background-image 0.2s ease-in-out;
 
 
 .drag-and-drop-overlay  {
-  border: 2px dashed #555;
-  font-size: 16px;
-  width: 85% !important;
-  margin: 0 auto !important; 
-  text-align: center !important;
-  height: 40% !important;
-  margin-top: 4%;
-  margin: auto;
-  position: absolute;
-  top: 30px; left: 0; bottom: 0; right: 0;
+      border: 2px dashed #555;
+      font-size: 16px;
+      width: 91% !important;
+      margin: 0 auto !important;
+      text-align: center !important;
+      height: 38% !important;
+      margin-top: 4%;
+      margin: auto;
+      position: absolute;
+      top: 20px;
+      left: 0;
+      bottom: 0;
+      right: 0;
 
   /*opacity: 0;*/
             /*position: relative;*/
@@ -824,7 +827,7 @@ transition: background-image 0.2s ease-in-out;
 }
 
 .second-phase {
-  background-color: #D3232D; 
+  background-color: #D3232D;
   /*height: 90px;*/
   width: 100%;
   position: absolute;
@@ -836,11 +839,11 @@ transition: background-image 0.2s ease-in-out;
 }
 
 .carrot {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  
+
   border-top: 10px solid black;
   position: absolute;
   z-index: 3;
@@ -915,7 +918,7 @@ transition: background-image 0.2s ease-in-out;
 
 .move-down  {
   /*display: block;*/
-    opacity: 1;    
+    opacity: 1;
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     -ms-transition: all 0.2s ease-out;
@@ -1030,7 +1033,7 @@ transition: background-image 0.2s ease-in-out;
      /*margin: 0.25em auto;*/
  /*    vertical-align: top;
      width: 9%;
- 
+
 }
 */
 
@@ -1045,7 +1048,7 @@ transition: background-image 0.2s ease-in-out;
      vertical-align: top;
      width: 68%;
      text-align: right;
- 
+
 }
 
 .footer-3 {
@@ -1063,7 +1066,7 @@ transition: background-image 0.2s ease-in-out;
 
 
 
- 
+
 }
 
 .footer-3 img {
@@ -1112,10 +1115,13 @@ input[type=text] {
   color: white;
   color: white;
   /*width: 100%;*/
-  margin-top: 50%;
+  margin-top: 47%;
   margin-left: 5%;
   margin-right: 5%;
 }
+
+
+
 
 .main_input_mask {
   pointer-events: none;
@@ -1207,7 +1213,7 @@ a {
   }
 
   .first-phase:first-child {
-     padding-top: 18%; 
+     padding-top: 18%;
   }
 
   .get_started {
@@ -1312,7 +1318,7 @@ a {
     /*top: 90%;*/
   }
 
-  
+
   .img_1-3 , .img_2-3, .img_3-3{
     /*z-index: 60;*/
     /*top: 50%;*/
@@ -1332,7 +1338,7 @@ a {
     /*z-index: 59;*/
   }
 
-  
+
   .img_1-3-blur , .img_2-3-blur, .img_3-3-blur{
     /*z-index: 59;*/
     /*top: 50%;*/
@@ -1374,7 +1380,7 @@ a {
 
 
 
-  input[type="text"]:not([size]) { 
+  input[type="text"]:not([size]) {
     /*width: 80%;*/
 
 
@@ -1386,7 +1392,7 @@ a {
 */
 
 
- 
+
 
         font-size: 6.5vw;
         padding-bottom: 4px;
@@ -1547,9 +1553,9 @@ a {
 
 }
 
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 667px) { 
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 667px) {
 /* STYLES GO HERE */
 .square {
   width: 100%;
@@ -1568,13 +1574,40 @@ body {
 
 }
 
+@media only screen and (max-width : 360px) {
+  .main_input {
+    margin-top: 46%;
+  }
+  input[type="text"]:not([size]) {
+    font-size: 7vw;
+  }
+  #sensor {
+    font-size: 7vw;
+  }
+}
+
+@media only screen and (max-width : 420px) {
+  .main_input {
+    margin-top: 45%;
+  }
+  input[type="text"]:not([size]) {
+    font-size: 7vw;
+  }
+  #sensor {
+    font-size: 7vw;
+  }
+}
 
 
 
-
-
-
-
-
-
-
+@media only screen and (max-width : 466px) {
+  .main_input {
+    margin-top: 45%;
+  }
+  input[type="text"]:not([size]) {
+    font-size: 7vw;
+  }
+  #sensor {
+    font-size: 7vw;
+  }
+}
