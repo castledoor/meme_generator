@@ -19,8 +19,6 @@ var jsMeme =
     jsMeme.canvas = $('.canvas-container > canvas').get(0);
     jsMeme.cache = document.createElement('canvas');
 
-
-    
     $('input[name^="line-"]').each(function()
     {
       $(this).typingEnd(function()
@@ -49,6 +47,7 @@ var jsMeme =
       jsMeme.cache.width = nWidth;
       jsMeme.cache.height = nHeight;
       jsMeme.cache.getContext('2d').drawImage(jsMeme.canvas, 0, 0);
+
     });
     
     // $('body > aside > h1').append(' <b>' + $('ul.changelog li[v]').first().attr('v') + '</b>');
@@ -66,23 +65,24 @@ var jsMeme =
     {
       'line-1':
       {
-        x: 0, y: 20,
+        x: 5, y: 101,
         alignment: 'left',
-        font: "500 30px \"MarkOff\", Arial, sans-serif",
+        font: "500 20px \"MarkOff\", Arial, sans-serif",
         text: "",
       },
       'line-2':
       {
-        x: 20, y: 60,
+        x: 5, y: 87,
         alignment: 'left',
-        font: "500 30px \"MarkOff\", Arial, sans-serif",
+        font: "500 20px \"MarkOff\", Arial, sans-serif",
         text: ""
       },
       'line-3':
       {
-        x: 20, y: 100,
+        x: 5,
+        y: 75,
         alignment: 'left',
-        font: "500 30px \"MarkOff\", Arial, sans-serif",
+        font: "500 20px \"MarkOff\", Arial, sans-serif",
         text: ""
       }
     },
@@ -118,8 +118,7 @@ var jsMeme =
       jsMeme.canvas.getContext('2d').drawImage(jsMeme.cache, 0, 0);
       
       for(i in jsMeme.captions.list)
-        jsMeme.text
-        (
+        jsMeme.text(
           jsMeme.captions.list[i].text,
           jsMeme.captions.list[i].x,
           jsMeme.captions.list[i].y,
@@ -133,54 +132,79 @@ var jsMeme =
   text: function(val, x, y, alignment, font, shadowstrength)
   {
     var ctx = jsMeme.canvas.getContext('2d');
-      ctx.font = font;
-      ctx.textAlign = "start";
-      ctx.textBaseline = "top";
+        ctx.font = "500 200% \"MarkOff\", Arial, sans-serif";
+        ctx.textAlign = "start";
+        ctx.textBaseline = "top";
 
-      if(x < 0) x = jsMeme.canvas.width + x;
-      if(y < 0)
-      {
-        y = jsMeme.canvas.height + y;
-        ctx.textBaseline = "bottom";
-      }
-    
-    if(alignment == 'center')
-      x = Math.round((jsMeme.canvas.width / 2) - (ctx.measureText(val).width / 2));
-    else if(alignment == 'right')
-      x -= ctx.measureText(val).width;
+        console.log(font);
 
-      // ctx.shadowColor = "#000";
-      // ctx.shadowOffsetX = 0;
-      // ctx.shadowOffsetY = 1;
-      // ctx.shadowBlur = 5;
-    
-    for(i = 0; i < shadowstrength; i ++)
-    {
-      ctx.fillStyle = "#000";
-      ctx.fillText(val, x, y);
+    if(x < 0){
+      x = jsMeme.canvas.width + x;
+    }
+
+    if(y < 0){
+      y = jsMeme.canvas.height + y;
+      ctx.textBaseline = "bottom";
     }
     
+    if(alignment == 'center'){
+      x = Math.round((jsMeme.canvas.width / 2) - (ctx.measureText(val).width / 2));
+    }else if(alignment == 'right'){
+      x -= ctx.measureText(val).width;
+    }
+
+    // ctx.shadowColor = "#000";
+    // ctx.shadowOffsetX = 0;
+    // ctx.shadowOffsetY = 1;
+    // ctx.shadowBlur = 5;
+    
+    // for(i = 0; i < shadowstrength; i ++)
+    // {
+    //   ctx.fillStyle = "#000";
+    //   ctx.fillText(val, x, y);
+    // }
+    
     ctx.fillStyle = "#FFFFFF";
-    ctx.fillText(val, x, y);
+
+    // console.log('This is x test:', x);
+    var canvas_calc = $("canvas").width()
+    var one = canvas_calc * 0.25 / x
+    var two = canvas_calc * 55 / y
+    // font = "500 3% \"MarkOff\", Arial, sans-serif";
+    
+
+    console.log(one); 
+    // var two = y / 7
+
+
+    //This is pulling in px instead of percent. How native function works
+    ctx.fillText(val, one, two);
   
   var xhr = new XMLHttpRequest();
 
   xhr.open("GET", "/images/white_logo_copy.png");
 
-  xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
-  xhr.onload = function()
-  {
-    var img = new Image;
-    var canvas_calc = $("canvas").width() / 2
-    blob = xhr.response;//xhr.response is now a blob object
-    img.onload = function() {
-        jsMeme.canvas.getContext('2d').drawImage(img,  20, canvas_calc * 1.75)
-        // jsMeme.canvas.getContext('2d').drawImage(img, 30, 30, 254, 36)
+    xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
+    xhr.onload = function()
+    {
+      var img = new Image;
+      var canvas_calc = $("canvas").width() / 2
+      blob = xhr.response; //xhr.response is now a blob object
+      img.onload = function() {
+          jsMeme.canvas.getContext('2d').drawImage(img,  20, canvas_calc * 1.75)
+
+       /*    if($(window).width() <= 768 ){
+          //Rotates image
+          jsMeme[lo[op]].getContext('2d').translate(canvas_width /1,canvas_width /900) 
+          jsMeme[lo[op]].getContext('2d').rotate(90 * Math.PI / 180);
+          
+ 
+        }*/
+          // jsMeme.canvas.getContext('2d').drawImage(img, 30, 30, 254, 36)
+      }
+      img.src = URL.createObjectURL(blob);
     }
-    img.src = URL.createObjectURL(blob);
-  }
-  xhr.send();
-    
+    xhr.send();
   },
   
   file:
@@ -188,35 +212,6 @@ var jsMeme =
     current: {},
     
     maxWidth: 500,
-
-    
-    // rotate: function(deg)
-    // {
-    //   if(deg !== 90 && deg !== -90) return;
-      
-    //   var tmp = document.createElement('canvas'),
-    //       ctx = tmp.getContext('2d'),
-    //       width = jsMeme.canvas.width,
-    //       height = jsMeme.canvas.height;
-      
-    //   tmp.width = height;
-    //   tmp.height = width;
-      
-    //   ctx.rotate(deg * Math.PI / 180);
-      
-    //   switch(deg)
-    //   {
-    //     case 90: ctx.drawImage(jsMeme.cache, 0, -height, width, height); break;
-    //     case -90: ctx.drawImage(jsMeme.cache, -width, 0, width, height); break;
-    //   }
-      
-    //   jsMeme.cache.width = jsMeme.canvas.width = tmp.width;
-    //   jsMeme.cache.height = jsMeme.canvas.height = tmp.height;
-    //   jsMeme.canvas.getContext('2d').drawImage(tmp, 0, 0);
-    //   jsMeme.cache.getContext('2d').drawImage(jsMeme.canvas, 0, 0);
-      
-    //   jsMeme.captions.redraw();
-    // },
     
     render: function(source)
     {
@@ -227,42 +222,53 @@ var jsMeme =
       
       var lo = ['canvas', 'cache'],
           width = source.width,
-          height = source.height,
+          height = source.width,
           nHeight = Math.round(canvas_width );
-          console.log(width);
 
-      for(op in lo)
-      {
+      for(op in lo){
         jsMeme[lo[op]].width = nHeight;
         jsMeme[lo[op]].height = nHeight;
 
-        jsMeme[lo[op]].getContext('2d').drawImage(source, 0, 0, width, height, 0, 0, jsMeme.file.maxWidth, nHeight);
-        
-    
-    
-    
-    //jsMeme[lo[op]].getContext('2d').drawImage(a, 0, 0, 254, 36, 0, 0, 254, 36);
+        //Check so rotates only on mobile 768px
+        // if($(window).width() <= 768 ){
+        //   //Rotates image
+        //   jsMeme[lo[op]].getContext('2d').translate(canvas_width /1,canvas_width /900) 
+        //   jsMeme[lo[op]].getContext('2d').rotate(90 * Math.PI / 180);
+          
+ 
+        // }
+
+//         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+//  jsMeme[lo[op]].getContext('2d').translate(canvas_width /1,canvas_width /900) 
+//           jsMeme[lo[op]].getContext('2d').rotate(90 * Math.PI / 180);
+// }
+
+
+
+        //Sent variables to scale to fit
+        var wrh = jsMeme[lo[op]].width / jsMeme[lo[op]].height;
+        var newWidth = jsMeme[lo[op]].width;
+        var newHeight = newWidth / wrh;
+
+        jsMeme[lo[op]].getContext('2d').drawImage(source, 0,0, newWidth , newHeight);
       }
     
-  var xhr = new XMLHttpRequest();
+      var xhr = new XMLHttpRequest();
+      var canvas_calc = $("canvas").width() / 2;
+      xhr.open("GET", "/images/white_logo_copy.png");
+      xhr.responseType = "blob"; //force the HTTP response, response-type header to be blob
 
-  var canvas_calc = $("canvas").width() / 2
-  xhr.open("GET", "/images/white_logo_copy.png");
-  xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
-  xhr.onload = function()
-  {
-    var img = new Image;
-    // console.log(img)
-    blob = xhr.response;//xhr.response is now a blob object
-    img.onload = function() {
+      xhr.onload = function(){
+        var img = new Image;
+        blob = xhr.response;//xhr.response is now a blob object
+        img.onload = function() {
+          jsMeme.canvas.getContext('2d').drawImage(img,  20, canvas_calc * 1.75)
+        }
+        img.src = URL.createObjectURL(blob);
 
-      jsMeme.canvas.getContext('2d').drawImage(img,  20, canvas_calc * 1.75)
-
-    }
-    img.src = URL.createObjectURL(blob);
-  }
-  xhr.send();
-    
+      }
+      xhr.send();
+  
     },
     
     import: function(input)
@@ -428,6 +434,15 @@ function updateText(type) {
 
 }
 
+ $("#sensor").on('click', function () {
+  $("#sensor").css("opacity", "0");
+  });
+
+// if($)
+// if(document.getElementById('sensor').value == "Refugee.") {
+//    
+//     }
+
 $('.get_started').click(function() {
   $(".first-phase").addClass("first-phase-gone");
   $(".img_1-2").addClass("img_1-2_black");
@@ -457,10 +472,16 @@ $('.get_started').click(function() {
   $(".8").removeClass("img_2-2");
   $(".8").addClass("img_1-1-blur");
 
+  $('.upload_magic').css("display", "block");
+
+
 });
 
+
+
 $('.drag-and-drop').click(function() {
-  $('.drag-and-drop-overlay').css("display", "none");
+  // $('.drag-and-drop-overlay').css("display", "none");
+    $('.main_input').removeClass("main_input_mask")
 });
 
 $('.interaction-button-three').click(function() {
@@ -480,5 +501,37 @@ $('.close').click(function() {
   $('.share-dialog').removeClass("share-dialog-show");
 });
 
+$('.close').click(function() {
+  $('.share-dialog').removeClass("share-dialog-show");
+  $('.share-this').css("display", "block");
+  $('.thanks').css("display", "none");
+});
 
 
+
+
+    
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ $('.move-down').css("transform", "translate(0px, 125px)");
+ $('.drag-title').empty();
+
+ $('.drag-title').append("Select A Photo");
+
+ $('.share-dialog').css("height", "25%");
+}
+
+
+// $(".img_1-2").on('touchmove','.scrollable',function(e) {
+//     e.stopPropagation();
+// }); 
+
+if(navigator.userAgent.match(/iPhone/)) {
+  
+
+    $(".dropdown").addClass("dropdown-mobile");
+}
+
+// $(function() {
+//   var a = $(".img_1-2")
+//    a.addEventListener("touchmove", function(e){ e.preventDefault(); }, false);
+// });
