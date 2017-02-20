@@ -49,8 +49,6 @@ function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
 
 		var orientation = EXIF.getTag(this, "Orientation");
 		
-		console.log("Orientation = " + orientation);
-    	console.log("Drawing image...")
 		switch(orientation){
 
        	case 8:
