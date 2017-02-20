@@ -136,7 +136,7 @@ var jsMeme =
         ctx.textAlign = "start";
         ctx.textBaseline = "top";
 
-        console.log(font);
+        // console.log(font);
 
     if(x < 0){
       x = jsMeme.canvas.width + x;
@@ -173,7 +173,7 @@ var jsMeme =
     // font = "500 3% \"MarkOff\", Arial, sans-serif";
     
 
-    console.log(one); 
+    // console.log(one); 
     // var two = y / 7
 
 
@@ -247,10 +247,12 @@ var jsMeme =
 
         //Sent variables to scale to fit
         var wrh = jsMeme[lo[op]].width / jsMeme[lo[op]].height;
+        console.log(wrh);
         var newWidth = jsMeme[lo[op]].width;
         var newHeight = newWidth / wrh;
 
         jsMeme[lo[op]].getContext('2d').drawImage(source, 0,0, newWidth , newHeight);
+        console.loh(neWidth);
       }
     
       var xhr = new XMLHttpRequest();
@@ -265,6 +267,7 @@ var jsMeme =
           jsMeme.canvas.getContext('2d').drawImage(img,  20, canvas_calc * 1.75)
         }
         img.src = URL.createObjectURL(blob);
+
 
       }
       xhr.send();
