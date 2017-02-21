@@ -485,6 +485,8 @@ function updateText(type) {
   });
 
 $('.get_started').click(function() {
+  $('.drag-and-drop').css('display', "block")
+  $('.drag-and-drop').css('opacity', "0")
   $(".first-phase").addClass("first-phase-gone");
   $(".img_1-2").addClass("img_1-2_black");
   $(".second-phase").addClass("move-down");
@@ -574,15 +576,25 @@ if(navigator.userAgent.match(/iPhone/)) {
 }
 
 
-$("#first-input").on("keydown keyup paste", function(){
+$("#first-input").on("focus keydown keyup paste", function(){
+    $(this).css("background" , "black")
+       $('#first-input').css("color", "white")
+})
+
+$("#second-input").on("focus keydown keyup paste", function(){
     $(this).css("background" , "black")
        $('#second-input').css("color", "white")
 })
 
-$("#second-input").on("keydown keyup paste", function(){
-    $(this).css("background" , "black")
-       $('#second-input').css("color", "white")
-})
+// $("#first-input").click(function() {
+//   $('#first-input').focus()
+// })
+
+// $("#second-input").click(function() {
+//   $('#second-input').focus()
+// })
+
+
 
 
 $( document ).ready(function() {
@@ -602,12 +614,19 @@ $( document ).ready(function() {
         // console.log("im typing");
 
        $('#first-input').css("background" , "transparent")
-       $('#first-input').css("color", "transparent")
+       $('#first-input').css("color", "transparent");
 
        
     }
 
 });
+
+
+// $('#first-input').keypress(function() {
+
+//     $(this).css("background" , "black")
+//        $('#second-input').css("color", "white")
+// });
 
 $( document ).ready(function() {
     var typingTimer;                //timer identifier
