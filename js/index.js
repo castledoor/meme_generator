@@ -678,6 +678,13 @@ $( document ).ready(function() {
 
 });
 
+
+var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+
+if (is_safari == true ) {
+  $('.dropdown').css("margin-top", "3%");
+}
+
 // $('#sensor').val()
 
 

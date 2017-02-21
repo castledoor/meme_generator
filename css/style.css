@@ -1234,6 +1234,17 @@ a {
   opacity: 0.5;
 }
 
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    
+    /* Safari only override */
+    ::i-block-chrome,.dropdown {
+         margin-top: 1%;
+    }
+}
+
+
 @media  (max-width: 819px) {
   .first-phase {
      font-size: 15px;
@@ -1630,7 +1641,6 @@ a {
 
   }
 */
-
 
 
 
