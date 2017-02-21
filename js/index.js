@@ -634,7 +634,70 @@ if(navigator.userAgent.match(/iPhone/)) {
 
 
     $(".dropdown").addClass("dropdown-mobile");
+    $("input").css("height", "28px");
 }
+
+
+$("#first-input").on("keydown keyup paste", function(){
+    $(this).css("background" , "black")
+       $('#second-input').css("color", "white")
+})
+
+$("#second-input").on("keydown keyup paste", function(){
+    $(this).css("background" , "black")
+       $('#second-input').css("color", "white")
+})
+
+
+$( document ).ready(function() {
+    var typingTimer;                //timer identifier
+    var doneTypingInterval = 900;  //time in ms (5 seconds)
+
+    //on keyup, start the countdown
+    $('#first-input').keyup(function(){
+        clearTimeout(typingTimer);
+        if ($('#first-input').val()) {
+            typingTimer = setTimeout(doneTyping, doneTypingInterval);
+        }
+    });
+
+    //user is "finished typing," do something
+    function doneTyping () {
+        // console.log("im typing");
+
+       $('#first-input').css("background" , "transparent")
+       $('#first-input').css("color", "transparent")
+
+       
+    }
+
+});
+
+$( document ).ready(function() {
+    var typingTimer;                //timer identifier
+    var doneTypingInterval = 900;  //time in ms (5 seconds)
+
+    //on keyup, start the countdown
+    $('#second-input').keyup(function(){
+        clearTimeout(typingTimer);
+        if ($('#second-input').val()) {
+            typingTimer = setTimeout(doneTyping, doneTypingInterval);
+        }
+    });
+
+    //user is "finished typing," do something
+    function doneTyping () {
+        // console.log("im typing");
+
+       $('#second-input').css("background" , "transparent")
+       $('#second-input').css("color", "transparent")
+
+       
+    }
+
+});
+
+
 
 // $(function() {
 //   var a = $(".img_1-2")
