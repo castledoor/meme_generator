@@ -762,6 +762,12 @@ transition: background-image 0.2s ease-in-out;
 
 }
 
+header a {
+    text-decoration: none;
+    z-index: 900000;
+    position: relative;
+}
+
 
 .drag-and-drop-overlay  {
       border: 2px dashed #555;
