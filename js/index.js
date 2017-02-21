@@ -432,8 +432,10 @@ var jsMeme =
           		.replace(/\.(.*?)$/, '-GlobalCitzen-ThisisAmerica.png')
           		.replace(/\{date\}/gi, new Date().toUTCString().toLowerCase().replace(/[^a-zA-Z0-9]/g, '-'));
 
+
         		if(filename.indexOf('.png') < 0)
           		filename += '.png';
+
 
 
 							if ( navigator.userAgent.match('CriOS') ) {
