@@ -1596,6 +1596,11 @@ a {
 
   }
 
+  .share-dialog-show {
+      top: 73px;
+          position: fixed;
+  }
+
   .mfooter-2 li{
     display: inline;
     padding-right: 4%;
