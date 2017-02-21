@@ -53,7 +53,7 @@
     <header>
      <a href="https://www.globalcitizen.org/en/info/thisisamerica/"> <img src="./images/black_logo.png"></a>
     </header>
-    
+
     <div class="share-dialog">
       <div class="close">
         <img  src="./images/icons/ex.svg">
@@ -61,7 +61,7 @@
       <div class="share-this">
         <!-- <p>Share your picture:</p> -->
         <p>Share my story. #ThisIsAmerica</p>
-        
+
         <ul class="button-bank">
           <li><img onclick="shareOnFB();" class="social-button" src="./images/icons/facebook.svg"></li>
           <!-- <li><img class="social-button" src="./images/icons/email.svg"></li> -->
@@ -72,7 +72,7 @@
         <img class="social-button" src="./images/icons/sweet_success.svg">
       </div>
     </div>
-    
+
       <div class="square blur img_1-1 8 "></div>
     <div class="square-fixed">
       <img class="square blur img_1-1 8 eight" src="./images/lab-tech.jpg">
@@ -108,7 +108,7 @@
             <canvas></canvas>
           </div>
           <div class="not-ready">
-            <button class="dark">
+            <div class="dark">
               <!-- Choose an image file to get started -->
               <input class="drag-and-drop" type="file" accept="image/*;capture=camera" onchange="jsMeme.file.import(this)" />
 
@@ -117,7 +117,7 @@
                 <img src="./images/camera_new.svg">
                 <p class="drag-title"></p>
               </div>
-            </button>
+            </div>
 
             <form class="main_input main_input_mask">
               <input autocomplete="new-password" id="first-input" type="text" placeholder="Artist."  name="line-1" />
@@ -136,12 +136,12 @@
               </form>
             </form>
 
-             
+
           </div>
         </aside>
 
 
-      
+
 
 
       <!-- all the action happens here -->
@@ -149,9 +149,9 @@
       <!-- <div class="mobile-square"> -->
         <div class=" square blur img_1-3 1"></div>
       <!-- </div> -->
-      
-        
-      
+
+
+
         <div class=" square blur img_2-1 2"></div>
         <div class=" square blur img_2-2 3"></div>
         <div class=" square blur img_2-3 4"></div>
@@ -163,7 +163,7 @@
    <!-- </div> -->
     </div>
     <!-- <footer>
-      
+
     </footer> -->
     <div id="bottom">
 
@@ -177,11 +177,11 @@
           </a>
         </div>
       </div>
-       
+
 
        <!-- <a href="instagram://app">ggggg</a> -->
 
-    
+
         <div class="brigade-footer">
           <div class="footer-left">
             <img src="./images/brigade-shield-white.svg">
@@ -198,8 +198,8 @@
         </div>
 
 
-        
- 
+
+
       </div>
 
         <div class="mobile-footer">
@@ -223,7 +223,7 @@
         </div>
 
     <script>
-	
+
 		  if ( XMLHttpRequest.prototype.sendAsBinary === undefined ) {
             XMLHttpRequest.prototype.sendAsBinary = function(string) {
                 var bytes = Array.prototype.map.call(string, function(c) {
@@ -232,7 +232,7 @@
                 this.send(new Uint8Array(bytes).buffer);
             };
         }
-        
+
         (function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) return;
@@ -240,20 +240,20 @@
           js.src = "//connect.facebook.net/en_US/all.js";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-        
+
         window.fbAsyncInit = function() {
             FB.init({
               appId  : "318978181833163",
               status : true,
               cookie : true,
-              xfbml  : true  
+              xfbml  : true
             });
         };
-        
+
         var postImageToFacebook = function(authToken,filename,mimeType,imageData,message) {
 
                 var boundary = '----ASDFJKDSFJDSKFEQ#$3reqds341dfdsac34343';
-          
+
                 var formData = '--' + boundary + '\r\n';
                 formData += 'Content-Disposition: form-data; name="source"; filename="' + filename + '"\r\n';
                 formData += 'Content-Type: ' + mimeType + '\r\n\r\n';
@@ -273,12 +273,12 @@
                 };
                 xhr.setRequestHeader( "Content-Type", "multipart/form-data; boundary=" + boundary );
                 xhr.sendAsBinary( formData );
-                
+
             };
 
-        
-        
-        
+
+
+
           var shareOnFB = function() {
           var data = jsMeme.canvas.toDataURL("image/png");
             var encodedPng = data.substring(data.indexOf(',') + 1, data.length);
