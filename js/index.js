@@ -650,7 +650,17 @@ $( document ).ready(function() {
        
     }
 
+
+
+    $('#sensor').click(function() {
+      if($(this).val() == null){ 
+            
+      }
+    });
+
 });
+
+// $('#sensor').val()
 
 
 
