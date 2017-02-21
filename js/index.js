@@ -679,9 +679,8 @@ $( document ).ready(function() {
 });
 
 
-var is_safari = navigator.userAgent.indexOf("Safari") > -1;
-
-if (is_safari == true ) {
+var is_safari = navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)
+if (is_safari != null ) {
   $('.dropdown').css("margin-top", "3%");
 }
 
