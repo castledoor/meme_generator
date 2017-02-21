@@ -434,98 +434,15 @@ var jsMeme =
         if(filename.indexOf('.png') < 0)
           filename += '.png';
 
+        
+
         saveAs(blob, filename);
       }, 'image/png');
-    }
-  },
 
-  webcam:
-  {
-    start: function()
-    {
-      if($('body > aside > .webcam').is(':visible'))
-        return jsMeme.webcam.stop();
-
-      $('body > aside > .drop').hide();
-      $('body > aside > .webcam').show();
-
-      var video = $('body > aside > .webcam > video')[0],
-          streaming = !1, width = 220, height = 0;
-
-      navigator.getMedia = (
-        navigator.getUserMedia ||
-        navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia ||
-        navigator.msGetUserMedia);
-
-      navigator.getMedia
-      (
-        { video: !0, audio: !1 },
-        function(stream)
-        {
-          if(navigator.mozGetUserMedia)
-            video.mozSrcObject = stream;
-          else
-          {
-            var vu = window.URL || window.webkitURL;
-            video.src = vu.createObjectURL(stream);
-          }
-          video.play();
-        },
-        function(error)
-        {
-          console.log("Oops! Something went wrong.\n" + error);
-        }
-      );
-
-      video.addEventListener('canplay', function(ev)
-      {
-        if(!streaming)
-        {
-          height = video.videoHeight / (video.videoWidth / width);
-          video.setAttribute('width', width);
-          video.setAttribute('height', height);
-          streaming = !0;
-        }
-      }, !1);
-    },
-
-    stop: function()
-    {
-      $('body > aside > .drop').show();
-      $('body > aside > .webcam').hide();
-      $('body > aside > .webcam > video')[0].pause();
-    },
-
-    reset: function()
-    {
-      $('body > aside > .webcam > video')[0].play();
-    },
-
-    take: function()
-    {
-      var video = $('body > aside > .webcam > video')[0],
-          oWidth = video.width,
-          oHeight = video.height,
-          width = video.videoWidth,
-          height = video.videoHeight;
-
-      video.width = width;
-      video.height = height;
-      video.pause();
-
-      var tmp = document.createElement('canvas');
-          tmp.width = width;
-          tmp.height = height;
-          tmp.getContext('2d').drawImage(video, 0, 0);
-
-      jsMeme.file.current = { name: "webcam-{date}" };
-      jsMeme.file.render(tmp);
-
-      video.width = oWidth;
-      video.height = oHeight;
     }
   }
+
+ 
 };
 
 $(jsMeme.init);
@@ -542,11 +459,6 @@ function updateText(type) {
  $("#sensor").on('click', function () {
   $("#sensor").css("opacity", "0");
   });
-
-// if($)
-// if(document.getElementById('sensor').value == "Refugee.") {
-//
-//     }
 
 $('.get_started').click(function() {
   $(".first-phase").addClass("first-phase-gone");
