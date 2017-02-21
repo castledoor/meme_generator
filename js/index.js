@@ -2,9 +2,9 @@
 // Modified, but originally from:
 // https://stackoverflow.com/questions/21961839/simulation-background-size-cover-in-canvas/21961894#21961894
 function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
-	
+
    EXIF.getData(img, function() {
-	   
+
        if (arguments.length === 2) {
            x = y = 0;
            w = ctx.canvas.width;
@@ -28,8 +28,8 @@ function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
            nh = ih * r,   // new prop. height
            cx, cy, cw, ch, ar = 1;
 
-       // decide which gap to fill    
-       if (nw < w) ar = w / nw;                             
+       // decide which gap to fill
+       if (nw < w) ar = w / nw;
        if (Math.abs(ar - 1) < 1e-14 && nh < h) ar = h / nh;  // updated
        nw *= ar;
        nh *= ar;
@@ -48,7 +48,7 @@ function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
        if (ch > ih) ch = ih;
 
 		var orientation = EXIF.getTag(this, "Orientation");
-		
+
 		switch(orientation){
 
        	case 8:
@@ -81,9 +81,9 @@ function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
 
    	 }
 
-	});	
+	});
 
-   
+
 
 }
 
@@ -413,11 +413,11 @@ var jsMeme =
 //
 // 				};
 
-				
+
                 reader.readAsDataURL(file);
             }
-			
-            
+
+
 
             return !1;
           }
@@ -425,40 +425,27 @@ var jsMeme =
 
     export: function()
     {
-      jsMeme.canvas.toBlob(function(blob)
+			jsMeme.canvas.toBlob(function(blob)
       {
 
-
-        if(navigator.userAgent.match('CriOS')) {
-
-          // var reader = new FileReader();
-          // var out = new Blob([this.response], {type: 'application/pdf'});
-          // reader.onload = function(e){
-          //   window.location.href = reader.result;
-          // }
-          // reader.readAsDataURL(out);
-
-          alert("We apologize, this feature is currently supported in Chrome iOS");
-
-
-
-
-
- 
-        } else {
             var filename = jsMeme.file.current.name
-          .replace(/\.(.*?)$/, '-GlobalCitzen-ThisisAmerica.png')
-          .replace(/\{date\}/gi, new Date().toUTCString().toLowerCase().replace(/[^a-zA-Z0-9]/g, '-'));
+          		.replace(/\.(.*?)$/, '-GlobalCitzen-ThisisAmerica.png')
+          		.replace(/\{date\}/gi, new Date().toUTCString().toLowerCase().replace(/[^a-zA-Z0-9]/g, '-'));
 
-        if(filename.indexOf('.png') < 0)
-          filename += '.png';
+        		if(filename.indexOf('.png') < 0)
+          		filename += '.png';
 
-        
 
-        saveAs(blob, filename);
-
-        }
-      
+							if ( navigator.userAgent.match('CriOS') ) {
+								var a = document.createElement('a');
+										a.href = jsMeme.canvas.toDataURL();
+    								a.download = filename + '.png';
+										a.target='blank';
+										a.click();
+								// alert("We apologize, this feature is currently supported in Chrome iOS");
+							} else {
+								saveAs(blob, filename);
+							}
 
 
       }, 'image/png');
@@ -466,7 +453,7 @@ var jsMeme =
     }
   }
 
- 
+
 };
 
 $(jsMeme.init);
@@ -481,7 +468,7 @@ function updateText(type) {
 
 }
 
- 
+
 
 $('.get_started').click(function() {
   $('.drag-and-drop').css('display', "block")
@@ -615,7 +602,7 @@ $( document ).ready(function() {
        $('#first-input').css("background" , "transparent")
        $('#first-input').css("color", "transparent");
 
-       
+
     }
 
 });
@@ -646,22 +633,22 @@ $( document ).ready(function() {
        $('#second-input').css("background" , "transparent")
        $('#second-input').css("color", "transparent")
 
-       
+
     }
 
 
   //   $("#sensor").on('click', function () {
-  
+
   // });
 
 
 
     $('#sensor').click(function() {
-      if($(this).val() == null){ 
+      if($(this).val() == null){
             $("#sensor").css("opacity", "1");
       }
 
-      if($(this).val() != null){ 
+      if($(this).val() != null){
             $("#sensor").css("opacity", "0");
       }
 
@@ -670,7 +657,7 @@ $( document ).ready(function() {
 
 
     //  $('#sensor').click(function() {
-    //   if($(this).val() != null){ 
+    //   if($(this).val() != null){
     //         $("#sensor").css("opacity", "0");
     //   }
     // });
