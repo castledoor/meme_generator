@@ -477,12 +477,11 @@ function updateText(type) {
   document.getElementById("third-input").focus();
   $('#third-input').keydown();
   $('#third-input').keyup();
+  $('#sensor').css("opacity", "0");
 
 }
 
- $("#sensor").on('click', function () {
-  $("#sensor").css("opacity", "0");
-  });
+ 
 
 $('.get_started').click(function() {
   $('.drag-and-drop').css('display', "block")
@@ -651,12 +650,31 @@ $( document ).ready(function() {
     }
 
 
+  //   $("#sensor").on('click', function () {
+  
+  // });
+
+
 
     $('#sensor').click(function() {
       if($(this).val() == null){ 
-            
+            $("#sensor").css("opacity", "1");
       }
+
+      if($(this).val() != null){ 
+            $("#sensor").css("opacity", "0");
+      }
+
+
     });
+
+
+    //  $('#sensor').click(function() {
+    //   if($(this).val() != null){ 
+    //         $("#sensor").css("opacity", "0");
+    //   }
+    // });
+
 
 });
 
