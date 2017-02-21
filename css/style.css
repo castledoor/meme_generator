@@ -777,6 +777,7 @@ transition: background-image 0.2s ease-in-out;
       left: 0;
       bottom: 0;
       right: 0;
+      display: none;
 
   /*opacity: 0;*/
             /*position: relative;*/
@@ -1236,13 +1237,7 @@ a {
 
 
 
-@media screen and (-webkit-min-device-pixel-ratio:0) { 
-    
-    /* Safari only override */
-    ::i-block-chrome,.dropdown {
-         margin-top: 1%;
-    }
-}
+
 
 
 @media  (max-width: 819px) {

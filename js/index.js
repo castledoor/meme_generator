@@ -474,6 +474,7 @@ function updateText(type) {
 
 $('.get_started').click(function() {
   $('.drag-and-drop').css('display', "block")
+  $('.drag-and-drop-overlay').css('display', "block")
   $('.drag-and-drop').css('opacity', "0")
   $(".first-phase").addClass("first-phase-gone");
   $(".img_1-2").addClass("img_1-2_black");
@@ -673,11 +674,17 @@ if (is_safari != null ) {
   $('.dropdown').css("margin-top", "3%");
 }
 
-// $('#sensor').val()
+$.fn.sendkeys = function (x){
+  x = x.replace(/([^{])\n/g, '$1{enter}'); // turn line feeds into explicit break insertions, but not if escaped
+  return this.each( function(){
+    bililiteRange(this).bounds('#first-input').sendkeys(x).select();
+    this.focus();
+  });
+};
 
 
-
-// $(function() {
-//   var a = $(".img_1-2")
-//    a.addEventListener("touchmove", function(e){ e.preventDefault(); }, false);
+// $('#first-input').click(function(){
+//   $('.output').removeClass('selected');
+//   var index = $(this).parents('th').index();
+//   $('.output').eq(index).addClass('selected').focus();
 // });
