@@ -427,7 +427,26 @@ var jsMeme =
     {
       jsMeme.canvas.toBlob(function(blob)
       {
-        var filename = jsMeme.file.current.name
+
+
+        if(navigator.userAgent.match('CriOS')) {
+
+          // var reader = new FileReader();
+          // var out = new Blob([this.response], {type: 'application/pdf'});
+          // reader.onload = function(e){
+          //   window.location.href = reader.result;
+          // }
+          // reader.readAsDataURL(out);
+
+          alert("We apologize, this feature is currently supported in Chrome iOS");
+
+
+
+
+
+ 
+        } else {
+            var filename = jsMeme.file.current.name
           .replace(/\.(.*?)$/, '-GlobalCitzen-ThisisAmerica.png')
           .replace(/\{date\}/gi, new Date().toUTCString().toLowerCase().replace(/[^a-zA-Z0-9]/g, '-'));
 
@@ -437,6 +456,11 @@ var jsMeme =
         
 
         saveAs(blob, filename);
+
+        }
+      
+
+
       }, 'image/png');
 
     }

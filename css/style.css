@@ -537,12 +537,12 @@ aside form {
   display: inline-block;
   font-size: 100%;
   vertical-align: top;
-  margin-top: 12px;
+  margin-top: 9px;
 }
 
 .brigade-footer img {
   /*width: 3%;*/
-  padding-top: 11px;
+  padding-top: 7px;
   padding-left: 4%;
   padding-right: 1.2%;
       width: 20px;
@@ -555,21 +555,22 @@ aside form {
 
 .footer-right {
   float: right;
-  width: 41%;
+  width: 46%;
 }
 
 .footer-right li {
   display: inline-block;
-  padding-right: 5%;
+  padding-right: 4%;
   font-family: "MarkOff Light";
   float:right;
   /*padding-right:;*/
 }
 
 .footer-right ul {
-  /*float: right;*/
+  float: right;
       margin-top: 11px;
-      padding-right: 27px;
+      width: 100%;
+      /*margin-right:14px;*/
 }
 
 .made-by {
@@ -1056,7 +1057,8 @@ transition: background-image 0.2s ease-in-out;
 
 .footer-1 p {
   font-size: 17px;
-  margin-left: -21px;
+  /*margin-left: -21px;*/
+  margin-left: -3%;
 }
 .footer-2 {
      /*margin: 0.25em auto;*/
@@ -1072,10 +1074,10 @@ transition: background-image 0.2s ease-in-out;
     /* width: 9%;
      float: right;*/
 
-     width: 9%;
+     /*width: 9%;*/
      float: right;
      /*margin-top: 2.5%;*/
-     margin-right: 2.5%;
+     margin-right: 14px;
 
      margin-top: 18px;
 
