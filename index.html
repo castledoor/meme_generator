@@ -63,7 +63,7 @@
         <p>Share my story. #ThisIsAmerica</p>
 
         <ul class="button-bank">
-          <li><img onclick="shareOnFB();" class="social-button" src="./images/icons/facebook.svg"></li>
+          <li><img onclick="shareOnFB();" onclick="ga('send', 'event', 'FacebookShare', 'click')" class="social-button" src="./images/icons/facebook.svg"></li>
           <!-- <li><img class="social-button" src="./images/icons/email.svg"></li> -->
         </ul>
       </div>
@@ -84,7 +84,7 @@
           <p>Share Your Story</p>
           <p>with the World.</p>
           <!-- <img src="./images/black_camera.png"> -->
-          <div class="get_started">
+          <div onclick="ga('send', 'event', 'Get_Started', 'click')" class="get_started">
             <p>Get Started</p>
           </div>
         </div>
@@ -94,11 +94,11 @@
               <div class="carrot"></div>
               <form class="interaction-form" onsubmit="return jsMeme.file.export(), !1">
                 <button>
-                  <img class="fr interaction-button-two" src="./images/icons/upload.svg">
+                  <img class="fr interaction-button-two" onclick="ga('send', 'event', 'Download', 'click')" src="./images/icons/upload.svg">
                 </button>
                 <!-- <img onclick="shareOnFB();" class="fr interaction-button-three" src="./images/icons/share.svg"> -->
-                <img class="fr interaction-button-three" src="./images/icons/share.svg">
-                <img class="fr interaction-button-one" onclick="return jsMeme.reset(), !1" src="./images/icons/redo.svg">
+                <img class="fr interaction-button-three" onclick="ga('send', 'event', 'Share_Button', 'click')"  src="./images/icons/share.svg">
+                <img class="fr interaction-button-one" onclick="return jsMeme.reset(), !1" onclick="ga('send', 'event', 'Restart', 'click')" src="./images/icons/redo.svg">
               </form>
             </div>
           </div>
@@ -123,7 +123,7 @@
               <input autocomplete="new-password" id="first-input" type="text" placeholder="Artist."  name="line-1" />
               <input autocomplete="new-password" id="second-input" type="text" placeholder="Daughter." name="line-2" />
               <form id="example" name="example" value="" id="sensorText">
-                <select id="sensor" onchange="updateText('sensor')">
+                <select id="sensor" onchange="updateText('sensor')" onclick="ga('send', 'event', 'DropDown', 'click')">
                   <option value="" disabled selected style="display: none;">Immigrant.</option>
                   <option class="option-1" value="Immigrant">Immigrant</option>
                   <option value="Refugee">Refugee</option>
