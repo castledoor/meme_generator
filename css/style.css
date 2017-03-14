@@ -239,6 +239,7 @@ input[type="text"]:not([size]) {
   font-family: "MarkOff";
   width: 100%;
   opacity:0.9;
+  /*opacity: 1 !important;*/
   background: transparent;
   /*height: 28px;*/
  }
@@ -447,8 +448,11 @@ header img {
   /*margin-top: -40px;*/
   position: absolute;
   position: absolute;
-  width: 100%;
-  height: 100%;
+/*  width: 100%;
+  height: 100%;*/
+
+  max-width:1080px;
+  max-height: 1080px;
   /*margin-top: 46px;*/
   overflow: hidden;
 }
@@ -461,13 +465,13 @@ header {
    /* max-width: 180px;*/
    max-width: 213px;
     margin: 0 auto;
-    height: 8.3%;
+    height: 80px;
     background-color: white;
 }
 
 header img {
     width: 100%;
-    padding-top: 18px;
+    padding-top: 25px;
 
 }
 
@@ -518,6 +522,23 @@ aside form {
 
 }
 
+@-moz-document url-prefix() { 
+  #sensor {
+     background: transparent;
+     font-family: "MarkOff";
+     border-top: none;
+     border-right: none;
+     border-left: none;
+     font-size: 2.6vw;
+     border-radius: 0;
+     border-color: rgba(115,115,115, 0.6);
+     color: #d3232d;
+     padding-bottom: 0.5%;
+     position: relative;
+     z-index: 30;
+     opacity: 0.8;
+  }
+}
 
 
 .brigade-footer {
@@ -530,7 +551,7 @@ aside form {
 
   height: 43px;
     background-color: #D3232D;
-    margin-top: 34px;
+    margin-top: 25px;
 }
 
 .brigade-footer p {
@@ -543,7 +564,7 @@ aside form {
 .brigade-footer img {
   /*width: 3%;*/
   padding-top: 7px;
-  padding-left: 4%;
+  padding-left: 16px;
   padding-right: 1.2%;
       width: 20px;
 }
@@ -560,7 +581,7 @@ aside form {
 
 .footer-right li {
   display: inline-block;
-  padding-right: 4%;
+  padding-right: 15px;
   font-family: "MarkOff Light";
   float:right;
   /*padding-right:;*/
@@ -632,7 +653,7 @@ transition: background-image 0.3s ease-in-out;
 
 .img_2-1{background-image:url("../images/firstlady.jpg");}
 .img_2-2{background-image:url("../images/coach.jpg");}
-.img_2-3{background-image:url("../images/regina.jpg");}
+.img_2-3{background-image:url("../images/ariana.jpg");}
 
 .img_3-1{background-image:url("../images/nurse.jpg");}
 .img_3-2{background-image:url("../images/artist.jpg");}
@@ -653,7 +674,7 @@ transition: background-image 0.2s ease-in-out;
 transition: background-image 0.2s ease-in-out;
 
 }
-.img_2-3-blur{background-image:url("../images/regina-blur.jpg");
+.img_2-3-blur{background-image:url("../images/ariana-blur.jpg");
 -webkit-transition: background-image 0.2s ease-in-out;
 transition: background-image 0.2s ease-in-out;
 }
@@ -1010,7 +1031,7 @@ header a {
     background-color: black;
     color: #fff;
     overflow-y: hidden;
-    height: 120px;
+    height: 112px;
 }
 
 
@@ -1071,19 +1092,17 @@ header a {
 */
 
 .footer-1 {
-      display: inline-block;
+    display: inline-block;
     width: 50%;
-    padding-left: 3%;
-    margin-top: 27px;
+    padding-left: 32px;
+    margin-top: 25px;
 }
 
 .footer-1 p {
   font-size: 17px;
-  /*margin-left: -21px;*/
-  margin-left: -3%;
+  margin-left: -18px;
 }
 .footer-2 {
-     /*margin: 0.25em auto;*/
      vertical-align: top;
      width: 68%;
      text-align: right;
@@ -1101,7 +1120,7 @@ header a {
      /*margin-top: 2.5%;*/
      margin-right: 14px;
 
-     margin-top: 18px;
+     margin-top: 14.5px;
 
 
 
@@ -1114,7 +1133,7 @@ header a {
 
 .footer {
   display: inline-block;
-}*/
+}
 
 
 .watermark {
@@ -1131,21 +1150,22 @@ input[type=text] {
     border-bottom: 1px solid #737373;
 }
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+::-webkit-input-placeholder { 
   color: #d3232d;
   font-family: "MarkOff";
 }
-::-moz-placeholder { /* Firefox 19+ */
+::-moz-placeholder { 
   color: #d3232d;
   font-family: "MarkOff";
 }
-:-ms-input-placeholder { /* IE 10+ */
+:-ms-input-placeholder {
   color: #d3232d;
   font-family: "MarkOff";
 }
-:-moz-placeholder { /* Firefox 18- */
+:-moz-placeholder { 
   color:#d3232d;
   font-family: "MarkOff";
+  opacity: 1 !important;
 }
 
 
@@ -1165,20 +1185,27 @@ input[type=text] {
    opacity:0.6;
 }
 
-/* Internet Explorer 10 */
 input:-ms-input-placeholder {
-    color: #999;
+    opacity:0.6;
 }
 input:focus:-ms-input-placeholder {
-    color: red;
+    opacity:0.6;
 }
 
 
+input:-moz-placeholder { /* Firefox 18- */
+   color: #d3232d;  
+   opacity: 0.9 !important;
+}
 
+input::-moz-placeholder {  /* Firefox 19+ */
+   color: #d3232d;
+   opacity: 0.9 !important;
+} 
 
 .main_input {
  color: white;
- margin-top: 51%;
+ margin-top: 50%;
  margin-left: 5%;
  margin-right: 5%;
  line-height: 32px;
@@ -1229,7 +1256,7 @@ caret-color: hsla(228, 4%, 24%, 0.8);
 
 
 canvas {
-  width: 100% !important;
+  /*width: 100% !important;*/
 }
 
 
@@ -1477,6 +1504,7 @@ a {
         width: 100%;
         -webkit-appearance: none;
         border-radius: 0;
+         height: 28px;
 
    }
 
@@ -1518,6 +1546,7 @@ a {
 
     margin-top: 52%;
     padding-bottom: 12px !important;
+
    }
 
    header {
@@ -1682,7 +1711,7 @@ body {
 
 @media only screen and (max-width : 360px) {
   .main_input {
-    margin-top: 46%;
+    margin-top: 51%;
   }
   input[type="text"]:not([size]) {
     font-size: 7vw;
